@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BestHookahModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlogArticles">
+          <Key>
+            <PropertyRef Name="BlogArticleId" />
+          </Key>
+          <Property Name="BlogArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogArticleName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BlogArticleShortDescription" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="BlogArticleCreationDate" Type="date" Nullable="false" />
+          <Property Name="BlogArticleAuthor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BlogArticleContent" Type="varchar(max)" Nullable="false" />
+          <Property Name="BlogArticleImagePath" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BranchDescription" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="BranchAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BranchPhone" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="BranchHoursOfOperations" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="255" />
+          <Property Name="ImageDescription" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="MenuPoints">
+          <Key>
+            <PropertyRef Name="MenuPointId" />
+          </Key>
+          <Property Name="MenuPointId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuPointName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MenuPointPrice" Type="float" Nullable="false" />
+          <Property Name="MenuPointDescription" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MenuPointImagePath" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MenuSectionName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuSections">
+          <Key>
+            <PropertyRef Name="MenuSectionId" />
+          </Key>
+          <Property Name="MenuSectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuSectionName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="OfferId" />
+          </Key>
+          <Property Name="OfferId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OfferShortDescription" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="OfferExpirationDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserves">
+          <Key>
+            <PropertyRef Name="ReserveId" />
+          </Key>
+          <Property Name="ReserveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ClientEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ClientPhone" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ClientMessage" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BestHookahModelStoreContainer">
+          <EntitySet Name="BlogArticles" EntityType="Self.BlogArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuPoints" EntityType="Self.MenuPoints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuSections" EntityType="Self.MenuSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserves" EntityType="Self.Reserves" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BestHookahModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BlogArticles">
+          <Key>
+            <PropertyRef Name="BlogArticleId" />
+          </Key>
+          <Property Name="BlogArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogArticleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlogArticleShortDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlogArticleCreationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BlogArticleAuthor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlogArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlogArticleImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BranchDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BranchAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BranchPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BranchHoursOfOperations" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ImageDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MenuPoints">
+          <Key>
+            <PropertyRef Name="MenuPointId" />
+          </Key>
+          <Property Name="MenuPointId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuPointName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuPointPrice" Type="Double" Nullable="false" />
+          <Property Name="MenuPointDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuPointImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuSectionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuSections">
+          <Key>
+            <PropertyRef Name="MenuSectionId" />
+          </Key>
+          <Property Name="MenuSectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuSectionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="OfferId" />
+          </Key>
+          <Property Name="OfferId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OfferShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OfferExpirationDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Reserves">
+          <Key>
+            <PropertyRef Name="ReserveId" />
+          </Key>
+          <Property Name="ReserveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BestHookahEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BlogArticles" EntityType="Self.BlogArticles" />
+          <EntitySet Name="Branches" EntityType="Self.Branches" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" />
+          <EntitySet Name="MenuPoints" EntityType="Self.MenuPoints" />
+          <EntitySet Name="MenuSections" EntityType="Self.MenuSections" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" />
+          <EntitySet Name="Reserves" EntityType="Self.Reserves" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BestHookahModelStoreContainer" CdmEntityContainer="BestHookahEntities">
+          <EntitySetMapping Name="BlogArticles">
+            <EntityTypeMapping TypeName="BestHookahModel.BlogArticles">
+              <MappingFragment StoreEntitySet="BlogArticles">
+                <ScalarProperty Name="BlogArticleId" ColumnName="BlogArticleId" />
+                <ScalarProperty Name="BlogArticleName" ColumnName="BlogArticleName" />
+                <ScalarProperty Name="BlogArticleShortDescription" ColumnName="BlogArticleShortDescription" />
+                <ScalarProperty Name="BlogArticleCreationDate" ColumnName="BlogArticleCreationDate" />
+                <ScalarProperty Name="BlogArticleAuthor" ColumnName="BlogArticleAuthor" />
+                <ScalarProperty Name="BlogArticleContent" ColumnName="BlogArticleContent" />
+                <ScalarProperty Name="BlogArticleImagePath" ColumnName="BlogArticleImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="BestHookahModel.Branches">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchDescription" ColumnName="BranchDescription" />
+                <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+                <ScalarProperty Name="BranchPhone" ColumnName="BranchPhone" />
+                <ScalarProperty Name="BranchHoursOfOperations" ColumnName="BranchHoursOfOperations" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gallery">
+            <EntityTypeMapping TypeName="BestHookahModel.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuPoints">
+            <EntityTypeMapping TypeName="BestHookahModel.MenuPoints">
+              <MappingFragment StoreEntitySet="MenuPoints">
+                <ScalarProperty Name="MenuPointId" ColumnName="MenuPointId" />
+                <ScalarProperty Name="MenuPointName" ColumnName="MenuPointName" />
+                <ScalarProperty Name="MenuPointPrice" ColumnName="MenuPointPrice" />
+                <ScalarProperty Name="MenuPointDescription" ColumnName="MenuPointDescription" />
+                <ScalarProperty Name="MenuPointImagePath" ColumnName="MenuPointImagePath" />
+                <ScalarProperty Name="MenuSectionName" ColumnName="MenuSectionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuSections">
+            <EntityTypeMapping TypeName="BestHookahModel.MenuSections">
+              <MappingFragment StoreEntitySet="MenuSections">
+                <ScalarProperty Name="MenuSectionId" ColumnName="MenuSectionId" />
+                <ScalarProperty Name="MenuSectionName" ColumnName="MenuSectionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="BestHookahModel.Notifications">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="BestHookahModel.Offers">
+              <MappingFragment StoreEntitySet="Offers">
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+                <ScalarProperty Name="OfferShortDescription" ColumnName="OfferShortDescription" />
+                <ScalarProperty Name="OfferExpirationDate" ColumnName="OfferExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserves">
+            <EntityTypeMapping TypeName="BestHookahModel.Reserves">
+              <MappingFragment StoreEntitySet="Reserves">
+                <ScalarProperty Name="ReserveId" ColumnName="ReserveId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientMessage" ColumnName="ClientMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

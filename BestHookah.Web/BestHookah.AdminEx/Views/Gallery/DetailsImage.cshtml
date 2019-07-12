@@ -1,0 +1,53 @@
+﻿@model BestHookah.DAL.Gallery
+
+@{
+    ViewBag.Title = "DetailsImage";
+}
+
+<h2>Details Image</h2>
+<p style="color: red">
+    @ViewBag.Message
+</p>
+
+<div>
+    <h4>Gallery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ImageId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditImage", new { id=Model.ImageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
