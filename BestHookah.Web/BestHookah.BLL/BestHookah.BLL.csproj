@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsService.cs" />
     <Compile Include="GalleryService.cs" />
     <Compile Include="OffersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

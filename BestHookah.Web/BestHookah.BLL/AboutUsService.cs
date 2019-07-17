@@ -8,18 +8,18 @@ using BestHookah.DAL;
 
 namespace BestHookah.BLL
 {
-    public class GalleryService
+    public class AboutUsService
     {
         static BestHookahEntities db = new BestHookahEntities();
 
-        public static bool AddImage(Gallery image, out string message)
+        public static bool AddBranch(Branches branch, out string message)
         {
             try
             {
-                db.Gallery.Add(image);
+                db.Branches.Add(branch);
                 db.SaveChanges();
 
-                message = "Image was added successfully";
+                message = "Branch was added successfully";
                 return true;
             }
             catch (Exception ex)
@@ -29,20 +29,22 @@ namespace BestHookah.BLL
             }
         }
 
-        public static bool EditImage(Gallery image, out string message)
+        public static bool EditBranch(Branches branch, out string message)
         {
             try
             {
-                Gallery img = db.Gallery.Find(image.ImageId);
+                Branches br = db.Branches.Find(branch.BranchId);
 
-                if (img != null)
+                if (br != null)
                 {
-                    img.ImagePath = image.ImagePath;
-                    img.ImageName = image.ImageName;
-                    img.ImageDescription = image.ImageDescription;
+                    br.BranchName = branch.BranchName;
+                    br.BranchDescription = branch.BranchDescription;
+                    br.BranchAddress = branch.BranchAddress;
+                    br.BranchPhone = branch.BranchPhone;
+                    br.BranchHoursOfOperations = branch.BranchHoursOfOperations;
                     db.SaveChanges();
 
-                    message = "Image was edited successfully";
+                    message = "Branch was edited successfully";
                     return true;
                 }
                 message = "Error";
@@ -55,17 +57,17 @@ namespace BestHookah.BLL
             }
         }
 
-        public static bool DeleteImage(int ImageId, out string message)
+        public static bool DeleteBranch(int BranchId, out string message)
         {
             try
             {
-                Gallery image = db.Gallery.Find(ImageId);
-                if (image != null)
+                Branches branch = db.Branches.Find(BranchId);
+                if (branch != null)
                 {
-                    db.Gallery.Remove(image);
+                    db.Branches.Remove(branch);
                     db.SaveChanges();
 
-                    message = "Image was deleted successfully";
+                    message = "Branch was deleted successfully";
                     return true;
                 }
                 message = "Error";

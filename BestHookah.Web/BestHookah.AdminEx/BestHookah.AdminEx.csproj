@@ -153,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
@@ -207,6 +208,11 @@
     <Content Include="Views\Gallery\DetailsImage.cshtml" />
     <Content Include="Views\Offers\CreateOffer.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
+    <Content Include="Views\AboutUs\BranchesList.cshtml" />
+    <Content Include="Views\AboutUs\CreateBranch.cshtml" />
+    <Content Include="Views\AboutUs\DeleteBranch.cshtml" />
+    <Content Include="Views\AboutUs\DetailsBranch.cshtml" />
+    <Content Include="Views\AboutUs\EditBranch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

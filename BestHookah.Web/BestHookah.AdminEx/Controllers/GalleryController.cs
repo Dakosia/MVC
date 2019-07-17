@@ -37,10 +37,10 @@ namespace BestHookah.AdminEx.Controllers
                 return RedirectToAction("CreateImage", new { image = image, message = message });
         }
 
-        public ActionResult EditImage(int id, string message)
+        public ActionResult EditImage(int Imageid, string message)
         {
             ViewBag.Message = message;
-            Gallery image = db.Gallery.Find(id);
+            Gallery image = db.Gallery.Find(Imageid);
             return View(image);
         }
 
@@ -52,31 +52,31 @@ namespace BestHookah.AdminEx.Controllers
             if (GalleryService.EditImage(image, out message))
                 return RedirectToAction("Index");
             else
-                return RedirectToAction("EditImage", new { id = image.ImageId, message = message });
+                return RedirectToAction("EditImage", new { image = image, message = message });
         }
 
-        public ActionResult DeleteImage(int id, string message)
+        public ActionResult DeleteImage(int Imageid, string message)
         {
             ViewBag.Message = message;
-            Gallery image = db.Gallery.Find(id);
+            Gallery image = db.Gallery.Find(Imageid);
             return View(image);
         }
 
         [HttpPost]
-        public ActionResult DeleteImage(int id)
+        public ActionResult DeleteImage(int Imageid)
         {
             string message = "";
 
-            if (GalleryService.DeleteImage(id, out message))
+            if (GalleryService.DeleteImage(Imageid, out message))
                 return RedirectToAction("Index");
             else
-                return RedirectToAction("DeleteImage", new { id = id, message = message });
+                return RedirectToAction("DeleteImage", new { Imageid = Imageid, message = message });
         }
 
-        public ActionResult DetailsImage(int id, string message)
+        public ActionResult DetailsImage(int Imageid, string message)
         {
             ViewBag.Message = message;
-            Gallery image = db.Gallery.Find(id);
+            Gallery image = db.Gallery.Find(Imageid);
             return View(image);
         }
     }

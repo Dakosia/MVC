@@ -154,11 +154,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HookahBarDrinksController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -285,13 +282,13 @@
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Shared\_BaseHeaderPartial.cshtml" />
-    <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\ContactUs\Index.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
-    <Content Include="Views\HookahBarDrinks\Index.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Shared\_ReservationPartial.cshtml" />
+    <Content Include="Views\AboutUs\ContactUs.cshtml" />
+    <Content Include="Views\AboutUs\HookahBarDrinks.cshtml" />
+    <Content Include="Views\AboutUs\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

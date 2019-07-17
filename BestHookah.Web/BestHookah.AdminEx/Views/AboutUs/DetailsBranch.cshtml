@@ -1,0 +1,70 @@
+﻿@model BestHookah.DAL.Branches
+
+@{
+    ViewBag.Title = "Details Branch";
+}
+
+<h2>Details Branch</h2>
+
+<p style="color: red">
+    @ViewBag.Message
+</p>
+
+<div>
+    <h4>Branches</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.BranchId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchHoursOfOperations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchHoursOfOperations)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditBranch", new { BranchId = Model.BranchId }) |
+    @Html.ActionLink("Back to List", "BranchesList")
+</p>
