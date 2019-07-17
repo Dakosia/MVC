@@ -43,10 +43,10 @@ INSERT INTO MenuPoints VALUES
 ('TASTY FRUIT COCKTAIL', 79.99, 'It has a special fruit flavor that makes the experience completely different.', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-4.jpg', 'HOOKAH BAR'),
 ('ART HOOKAH', 49.99, 'These all glass hookah are created using only the highest quality of glass.', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-home-img-3.jpg', 'DRINKS MENU'),
 ('TASTY FRUIT COCKTAIL', 79.99, 'It has a special fruit flavor that makes the experience completely different.', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-4.jpg', 'DRINKS MENU'),
-('COSMO', 35.95, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-5.jpg', 'DRINKS MENU'),
-('MOHITO', 30.50, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-6.jpg', 'DRINKS MENU'),
-('WINE', 21.60, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-7.jpg', 'DRINKS MENU'),
-('LIQUOR', 28.30, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-8.jpg', 'DRINKS MENU')
+('COSMO', 35.95, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-5.jpg', 'DRINKS'),
+('MOHITO', 30.50, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-6.jpg', 'DRINKS'),
+('WINE', 21.60, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-7.jpg', 'DRINKS'),
+('LIQUOR', 28.30, '', '../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-hookah-_bar-img-8.jpg', 'DRINKS')
 GO
 
 
