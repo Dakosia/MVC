@@ -260,18 +260,37 @@ CREATE TABLE Reserves
 	ClientEmail VARCHAR(255) NOT NULL,
 	ClientPhone VARCHAR(25) NOT NULL,
 	ClientMessage VARCHAR(255) NOT NULL,
+	ReserveDate DATE NOT NULL DEFAULT GETDATE(),
 	CONSTRAINT PK_ReserveId PRIMARY KEY (ReserveId)
 )
 GO
 
 INSERT INTO Reserves VALUES
-('Client1', 'client1@gmail.com', '+77017654321', 'ClientMessage1'),
-('Client2', 'client2@gmail.com', '+77057654321', 'ClientMessage2'),
-('Client3', 'client3@gmail.com', '+77777654321', 'ClientMessage3')
+('Client1', 'client1@gmail.com', '+77017654321', 'ClientMessage1', '06.30.2019'),
+('Client2', 'client2@gmail.com', '+77057654321', 'ClientMessage2', '07.12.2019'),
+('Client3', 'client3@gmail.com', '+77777654321', 'ClientMessage3', '07.15.2019')
 GO
 
 
 
+
+CREATE TABLE Reviews
+(
+	ReviewId INT IDENTITY(1, 1) NOT NULL,
+	ReviewName VARCHAR(255) NOT NULL,
+	ReviewAddress VARCHAR(255) NOT NULL,
+	ReviewContent VARCHAR(255) NOT NULL,
+	CONSTRAINT PK_ReviewId PRIMARY KEY (ReviewId)
+)
+GO
+
+INSERT INTO Reviews VALUES
+('Kelly Harrison', 'Beverly Hills, Los Angeles, CA', 'Came here on Saturday night and loved this place! Nice stuff and music cozy atmosphere the best hookah I ever tried in Los Angeles thanks for having us,gonna be back pretty soon'),
+('Sara Dunn', 'Beverly Hills, Los Angeles, CA', 'This hookah lounge is by far the best place to go! It doesn''t compare to any other place in the area. Good vibe, the staff is amazing always attentive and friendly! The music is always on point!'),
+('Kara Sunn', 'Beverly Hills, Los Angeles, CA', 'It doesn''t compare to any other place in the area. Good vibe, the staff is amazing always attentive and friendly! The music is always on point!'),
+('Sally Brown', 'Beverly Hills, Los Angeles, CA', 'Nice stuff and music cozy atmosphere the best hookah I ever tried in Los Angeles thanks for having us,gonna be back pretty soon. Came here on Saturday night and loved this place!'),
+('Hara Harrison', 'Beverly Hills, Los Angeles, CA', 'Good vibe, the staff is amazing always attentive and friendly! The music is always on point! This hookah lounge is by far the best place to go! It doesn''t compare to any other place in the area.')
+GO
 
 
 SELECT * FROM MenuSections
@@ -282,4 +301,5 @@ SELECT * FROM Gallery
 SELECT * FROM Offers
 SELECT * FROM Notifications
 SELECT * FROM Reserves
+SELECT * FROM Reviews
 GO
