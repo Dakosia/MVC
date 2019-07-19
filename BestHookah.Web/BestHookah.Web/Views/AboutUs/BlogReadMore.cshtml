@@ -1,0 +1,160 @@
+﻿@using BestHookah.DAL
+@model BlogArticles
+
+@{
+    ViewBag.Title = "BlogReadMore";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<!-- With dynamic template -->
+<div class="moto-widget moto-widget-block moto-bg-color2_3 moto-spacing-top-large moto-spacing-right-auto moto-spacing-bottom-large moto-spacing-left-auto" data-widget="block" data-spacing="lala" style="background-image:url(../../Content/mt-demo/74300/74314/mt-content/uploads/2018/11/mt-1616-content-bg-1.jpg);background-position:center;background-repeat:no-repeat;background-size:cover;" data-bg-image="2018/11/mt-1616-content-bg-1.jpg" data-bg-position="center" data-draggable-disabled="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="moto-cell col-sm-12" data-container="container">
+                <div class="moto-widget moto-widget-row row-fixed moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto" data-grid-type="sm" data-widget="row" data-spacing="aaaa" style="" data-bg-position="left top" data-draggable-disabled="">
+                    <div class="container-fluid">
+                        <div class="row" data-container="container">
+                            <div class="moto-widget moto-widget-row__column moto-cell col-sm-12 moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto" style="" data-widget="row.column" data-container="container" data-spacing="aaaa" data-bg-position="left top">
+                                <div class="moto-widget moto-widget-text moto-preset-default moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto" data-widget="text" data-preset="default" data-spacing="aaaa" data-animation="" data-draggable-disabled="">
+                                    <div class="moto-widget-text-content moto-widget-text-editable"><p class="moto-text_system_5">ONE OF THE POSTS</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="moto-widget moto-widget-block moto-spacing-top-large moto-spacing-right-auto moto-spacing-bottom-large moto-spacing-left-auto" data-widget="block" data-spacing="lala" style="" data-bg-position="left top">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="moto-cell col-sm-12" data-container="container">
+
+                <div class="moto-widget moto-widget-row row-fixed" data-widget="row" style="" data-bg-position="left top">
+                    <div class="container-fluid">
+                        <div class="row" data-container="container">
+                            <div class="moto-cell col-sm-9 moto-widget moto-widget-row__column" data-container="container" data-widget="row.column" style="" data-bg-position="left top">
+                                <div data-widget-id="wid__blog_post_name__5be989d42e188" class="moto-widget moto-widget-blog-post_name moto-preset-default moto-align-left moto-spacing-top-small moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto  " data-preset="default" data-widget="blog.post_name">
+                                    <div class="moto-widget moto-widget-text moto-preset-default moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto" data-widget="text" data-preset="default" data-spacing="aaaa">
+                                        <div class="moto-widget-text-content moto-widget-text-editable">
+                                            <h1 class="moto-text_system_6">@Model.BlogArticleName</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-grid-type="sm" class="moto-widget moto-widget-row row-gutter-0" data-widget="row" style="" data-bg-position="left top">
+                                    <div class="container-fluid">
+                                        <div class="row" data-container="container">
+                                            <div class="moto-cell col-sm-3 moto-widget moto-widget-row__column" data-container="container" data-widget="row.column" style="" data-bg-position="left top">
+                                                <div data-widget-id="wid__blog_post_published_on__5be989d42e9cd" class="moto-widget moto-widget-blog-post_published_on moto-preset-default moto-align-left moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto " data-preset="default" data-widget="blog.post_published_on" data-spacing="aasa">
+                                                    <div class="moto-text_system_11">
+                                                        <span class="fa fa-calendar moto-widget-blog-post_published_on-icon"></span><span class="moto-widget-blog-post_published_on-date">
+                                                            @Model.BlogArticleCreationDate
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="moto-cell col-sm-9 moto-widget moto-widget-row__column" data-container="container" data-widget="row.column" style="" data-bg-position="left top">
+                                                <div data-widget-id="wid__blog_post_author__5be989d42f1b4" class="moto-widget moto-widget-blog-post-author moto-preset-default moto-align-left moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto " data-widget="blog.post_author" data-preset="default">
+                                                    <div class="moto-text_system_11">
+                                                        <span class="fa fa-user moto-widget-blog-post-author-icon"></span><span class="moto-widget-blog-post-author-text">@Model.BlogArticleAuthor</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><div data-widget-id="wid_1542031948_vz95va2id" class="moto-widget moto-widget-spacer moto-preset-default moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto "
+                                           data-widget="spacer" data-preset="default" data-spacing="aaaa" data-visible-on="mobile-v">
+                                    <div class="moto-widget-spacer-block" style="height:10px"></div>
+                                </div><div data-widget-id="wid__social_buttons__5be989d42f975" class="moto-widget moto-widget-social-buttons moto-preset-default moto-align-left moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto " data-widget="social_buttons" data-preset="default" data-spacing="aasa">
+
+                                    <ul class="social-buttons-list">
+                                        <li class="social-button" data-name="facebook_share" data-provider="facebook"><div class="fb-share-button" data-href="https://template74314.motopreview.com/blog/the-most-common-mistakes-when-managing-personal-finances/" data-layout="button_count" moto-dependency-require="facebook"></div></li>
+                                        <li class="social-button" data-name="twitter_tweet" data-provider="twitter"><a href="index.html" class="twitter-share-button" moto-dependency-require="twitter"></a></li>
+                                        <li class="social-button" data-name="google_share" data-provider="google_plus"><div class="g-plus" data-action="share" data-annotation="bubble" data-href="https://template74314.motopreview.com/blog/the-most-common-mistakes-when-managing-personal-finances/" moto-dependency-require="google_plus"></div></li>
+                                        <li class="social-button" data-name="linkedIn_share" data-provider="linkedin"><span type="IN/Share" data-url="https://template74314.motopreview.com/blog/the-most-common-mistakes-when-managing-personal-finances/" data-counter="right" moto-dependency-require="linkedin"></span></li>
+                                    </ul>
+                                </div><div data-widget-id="wid_1542031948_ycawuw6i1" class="moto-widget moto-widget-spacer moto-preset-default moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto "
+                                           data-widget="spacer" data-preset="default" data-spacing="aaaa" data-visible-on="mobile-v">
+                                    <div class="moto-widget-spacer-block" style="height:10px"></div>
+                                </div>
+                                <div data-widget-id="wid__blog_post_content__5be989d43025c" class="moto-widget moto-widget-blog-post_content moto-preset-default  moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto" data-widget="blog.post_content">
+                                    <section id="section-content" class="content page-24 moto-section" data-widget="section" data-container="section">
+                                        <div class="moto-widget moto-widget-row" data-widget="row" style="" data-bg-position="left top">
+                                            <div class="container-fluid">
+                                                <div class="row" data-container="container">
+                                                    <div class="moto-cell col-sm-12 moto-widget moto-widget-row__column" data-container="container" data-widget="row.column" style="" data-bg-position="left top">
+                                                        <div data-widget-id="wid__image__5be98894e4aa1" class="moto-widget moto-widget-image moto-preset-default moto-align-center moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto  " data-widget="image">
+                                                            <span class="moto-widget-image-link">
+                                                                <img data-src="@Model.BlogArticleImagePath" class="moto-widget-image-picture lazyload" data-id="277" title="" alt="">
+                                                            </span>
+                                                        </div><div class="moto-widget moto-widget-text moto-preset-default moto-spacing-top-small moto-spacing-right-auto moto-spacing-bottom-large moto-spacing-left-auto" data-widget="text" data-preset="default" data-spacing="sala">
+                                                            <div class="moto-widget-text-content moto-widget-text-editable"><p class="moto-text_system_10">@Model.BlogArticleContent</p></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </div>
+                                <div data-widget-id="wid_1542031993_10m4iv4yr" class="moto-widget moto-widget-image moto-preset-default  moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto  " data-widget="image">
+                                    <span class="moto-widget-image-link">
+                                        <img data-src="/Content/mt-demo/74300/74314/mt-content/uploads/2018/11/disqus-light.png" class="moto-widget-image-picture lazyload" data-id="285" title="" alt="">
+                                    </span>
+                                </div><div data-widget-id="wid__blog_post_comments__5be989d43091b" class="moto-widget moto-widget-blog-post_comments moto-preset-default moto-spacing-top-small moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto " data-widget="blog.post_comments" data-preset="default">
+                                    <div class="moto-widget-empty"></div>
+                                    <div data-widget-id="wid__disqus__5bf2ed26aa71b" class="moto-widget moto-widget-disqus moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto " data-widget="disqus" data-params="{&quot;shortname&quot;:null,&quot;language&quot;:&quot;en&quot;,&quot;use_identifier&quot;:false,&quot;identifier&quot;:&quot;&quot;,&quot;url&quot;:&quot;dynamic&quot;}" data-url="index.html">
+                                        <div class="moto-widget-empty"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="moto-cell col-sm-3 moto-widget moto-widget-row__column" data-container="container" data-widget="row.column" style="" data-bg-position="left top">
+                                <div data-widget-id="wid__blog_recent_posts__5be989091448c" class="moto-widget moto-widget-blog-recent_posts moto-preset-default moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-auto moto-spacing-left-auto " data-widget="blog.recent_posts">
+                                    <div class="moto-widget-blog-recent_posts-title">
+                                        <div class="moto-widget moto-widget-text moto-preset-default moto-spacing-top-small moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto" data-preset="default" data-spacing="aasa">
+                                            <div class="moto-widget-text-content moto-widget-text-editable">
+                                                <p class="moto-text_system_6">RECENT POSTS</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="moto-widget-blog-recent_posts-list">
+                                        @foreach (var item in (ViewData["BlogArticles"] as List<BlogArticles>).Take(5))
+                                        {
+                                            <li class="moto-widget-blog-recent_posts-item">
+                                                <div class="moto-widget-blog-recent_posts-item-preview">
+                                                    <div class="moto-widget moto-widget-image moto-preset-default moto-spacing-top-small moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto" data-preset="default" data-spacing="sasa">
+                                                        <a href="@Url.Action("BlogReadMore", "AboutUs", new { BlogArticleId = item.BlogArticleId })" class="moto-widget-image-link moto-link">
+                                                            <img src="@item.BlogArticleImagePath" class="moto-widget-image-picture">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="moto-widget-blog-recent_posts-item-title">
+                                                    <div class="moto-widget moto-widget-text moto-preset-default moto-spacing-top-auto moto-spacing-right-auto moto-spacing-bottom-small moto-spacing-left-auto" data-preset="default" data-spacing="aasa">
+                                                        <div class="moto-widget-text-content moto-widget-text-editable">
+                                                            <h2 class="blog-post-title moto-text_system_9">
+                                                                <a href="@Url.Action("BlogReadMore", "AboutUs", new { BlogArticleId = item.BlogArticleId })">@item.BlogArticleName</a>
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

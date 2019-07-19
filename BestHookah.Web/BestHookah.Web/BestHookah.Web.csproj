@@ -302,6 +302,7 @@
     <Content Include="Views\AboutUs\Events.cshtml" />
     <Content Include="Views\AboutUs\Menu.cshtml" />
     <Content Include="Views\Home\CreateReview.cshtml" />
+    <Content Include="Views\AboutUs\BlogReadMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
