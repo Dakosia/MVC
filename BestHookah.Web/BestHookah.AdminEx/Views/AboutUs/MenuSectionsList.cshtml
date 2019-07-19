@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BestHookah.DAL.MenuSections>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BestHookah.DAL.MenuSections>
 
 @{
     ViewBag.Title = "Menu Sections List";
@@ -12,28 +14,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MenuSectionId)
+            @Html.DisplayNameFor(model => model.First().MenuSectionId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenuSectionName)
+            @Html.DisplayNameFor(model => model.First().MenuSectionName)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuSectionId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuSectionName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditMenuSection", new { MenuSectionId = item.MenuSectionId }) |
-            @Html.ActionLink("Details", "DetailsMenuSection", new { MenuSectionId = item.MenuSectionId }) |
-            @Html.ActionLink("Delete", "DeleteMenuSection", new { MenuSectionId = item.MenuSectionId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuSectionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuSectionName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMenuSection", new { MenuSectionId = item.MenuSectionId }) |
+                @Html.ActionLink("Details", "DetailsMenuSection", new { MenuSectionId = item.MenuSectionId }) |
+                @Html.ActionLink("Delete", "DeleteMenuSection", new { MenuSectionId = item.MenuSectionId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("MenuSectionsList", new { page }), new PagedListRenderOptions() { DisplayPageCountAndCurrentLocation = true })

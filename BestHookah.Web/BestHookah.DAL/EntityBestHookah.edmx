@@ -89,8 +89,8 @@
             <PropertyRef Name="ReviewId" />
           </Key>
           <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ReviewName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="ReviewAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserAddress" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ReviewContent" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityContainer Name="BestHookahModelStoreContainer">
@@ -203,8 +203,8 @@
             <PropertyRef Name="ReviewId" />
           </Key>
           <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ReviewName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ReviewAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ReviewContent" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
@@ -304,8 +304,8 @@
             <EntityTypeMapping TypeName="BestHookahModel.Reviews">
               <MappingFragment StoreEntitySet="Reviews">
                 <ScalarProperty Name="ReviewContent" ColumnName="ReviewContent" />
-                <ScalarProperty Name="ReviewAddress" ColumnName="ReviewAddress" />
-                <ScalarProperty Name="ReviewName" ColumnName="ReviewName" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
               </MappingFragment>
             </EntityTypeMapping>

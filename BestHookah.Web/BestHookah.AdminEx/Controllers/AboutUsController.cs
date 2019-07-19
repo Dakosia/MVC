@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using BestHookah.BLL;
 using BestHookah.DAL;
+using PagedList;
+using PagedList.Mvc;
 
 
 namespace BestHookah.AdminEx.Controllers
@@ -24,11 +26,11 @@ namespace BestHookah.AdminEx.Controllers
 
         #region Menu Sections
         // GET: MenuSections
-        public ActionResult MenuSectionsList()
+        public ActionResult MenuSectionsList(int? page)
         {
             List<MenuSections> menuSections = db.MenuSections.ToList();
 
-            return View(menuSections);
+            return View(menuSections.ToPagedList(page ?? 1, 5));
         }
 
         public ActionResult CreateMenuSection(MenuSections menuSection, string message)
@@ -95,11 +97,11 @@ namespace BestHookah.AdminEx.Controllers
 
         #region Menu Points
         // GET: MenuPoints
-        public ActionResult MenuPointsList()
+        public ActionResult MenuPointsList(int? page)
         {
             List<MenuPoints> menuPoints = db.MenuPoints.ToList();
 
-            return View(menuPoints);
+            return View(menuPoints.ToPagedList(page ?? 1, 5));
         }
 
         public ActionResult CreateMenuPoint(MenuPoints menuPoint, string message)

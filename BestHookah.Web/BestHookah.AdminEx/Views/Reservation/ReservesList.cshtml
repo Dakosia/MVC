@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BestHookah.DAL.Reserves>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BestHookah.DAL.Reserves>
 
 @{
     ViewBag.Title = "Reserves List";
@@ -16,22 +18,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ReserveId)
+            @Html.DisplayNameFor(model => model.First().ReserveId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientName)
+            @Html.DisplayNameFor(model => model.First().ClientName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientEmail)
+            @Html.DisplayNameFor(model => model.First().ClientEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientPhone)
+            @Html.DisplayNameFor(model => model.First().ClientPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientMessage)
+            @Html.DisplayNameFor(model => model.First().ClientMessage)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReserveDate)
+            @Html.DisplayNameFor(model => model.First().ReserveDate)
         </th>
         <th></th>
     </tr>
@@ -67,6 +69,8 @@
 
 </table>
 
+@Html.PagedListPager(Model, page => Url.Action("ReservesList", new { page }), new PagedListRenderOptions() { DisplayPageCountAndCurrentLocation = true })
+
 
 
 @using (Html.BeginForm("Filter", "Reservation"))
@@ -80,22 +84,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ReserveId)
+            @Html.DisplayNameFor(model => model.First().ReserveId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientName)
+            @Html.DisplayNameFor(model => model.First().ClientName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientEmail)
+            @Html.DisplayNameFor(model => model.First().ClientEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientPhone)
+            @Html.DisplayNameFor(model => model.First().ClientPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientMessage)
+            @Html.DisplayNameFor(model => model.First().ClientMessage)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReserveDate)
+            @Html.DisplayNameFor(model => model.First().ReserveDate)
         </th>
         <th></th>
     </tr>
@@ -130,3 +134,5 @@
     }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("ReservesList", new { page }), new PagedListRenderOptions() { DisplayPageCountAndCurrentLocation = true })

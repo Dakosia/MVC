@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BestHookah.DAL.MenuPoints>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BestHookah.DAL.MenuPoints>
 
 @{
     ViewBag.Title = "Menu Points List";
@@ -12,52 +14,55 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MenuPointId)
+            @Html.DisplayNameFor(model => model.First().MenuPointId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenuPointName)
+            @Html.DisplayNameFor(model => model.First().MenuPointName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenuPointPrice)
+            @Html.DisplayNameFor(model => model.First().MenuPointPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenuPointDescription)
+            @Html.DisplayNameFor(model => model.First().MenuPointDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenuPointImagePath)
+            @Html.DisplayNameFor(model => model.First().MenuPointImagePath)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MenuSectionName)
+            @Html.DisplayNameFor(model => model.First().MenuSectionName)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuPointId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuPointName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuPointPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuPointDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuPointImagePath)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuSectionName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditMenuPoint", new { MenuPointId = item.MenuPointId }) |
-            @Html.ActionLink("Details", "DetailsMenuPoint", new { MenuPointId = item.MenuPointId }) |
-            @Html.ActionLink("Delete", "DeleteMenuPoint", new { MenuPointId = item.MenuPointId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuPointId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuPointName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuPointPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuPointDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuPointImagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuSectionName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMenuPoint", new { MenuPointId = item.MenuPointId }) |
+                @Html.ActionLink("Details", "DetailsMenuPoint", new { MenuPointId = item.MenuPointId }) |
+                @Html.ActionLink("Delete", "DeleteMenuPoint", new { MenuPointId = item.MenuPointId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("MenuPointsList", new { page }), new PagedListRenderOptions() { DisplayPageCountAndCurrentLocation = true })

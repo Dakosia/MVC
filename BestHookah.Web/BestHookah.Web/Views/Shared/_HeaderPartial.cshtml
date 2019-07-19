@@ -88,8 +88,13 @@
                                             <li class="moto-widget-menu-item">
                                                 <a href="@Url.Action("Index","Reservation")" data-action="page" class="moto-widget-menu-link moto-widget-menu-link-level-1 moto-link">Reservation</a>
                                             </li>
-                                            <li class="moto-widget-menu-item">
-                                                <a href="@Url.Action("ContactUs","AboutUs")" data-action="page" class="moto-widget-menu-link moto-widget-menu-link-level-1 moto-link">Contact us</a>
+                                            <li class="moto-widget-menu-item moto-widget-menu-item-has-submenu">
+                                                <a href="@Url.Action("ContactUs","AboutUs")" data-action="page" class="moto-widget-menu-link moto-widget-menu-link-level-1 moto-widget-menu-link-submenu moto-link">Contact us<span class="fa moto-widget-menu-link-arrow"></span></a>
+                                                <ul class="moto-widget-menu-sublist">
+                                                    <li class="moto-widget-menu-item">
+                                                        <a href="@Url.Action("CreateReview","Home")" data-action="page" class="moto-widget-menu-link moto-widget-menu-link-level-2 moto-link">Feedback</a>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
                                     </div>

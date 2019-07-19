@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using BestHookah.DAL;
 using BestHookah.BLL;
+using PagedList;
+using PagedList.Mvc;
 
 namespace BestHookah.AdminEx.Controllers
 {
@@ -13,10 +15,10 @@ namespace BestHookah.AdminEx.Controllers
         BestHookahEntities db = new BestHookahEntities();
 
         // GET: Reservation
-        public ActionResult ReservesList()
+        public ActionResult ReservesList(int? page)
         {
             List<Reserves> reserves = db.Reserves.ToList();
-            return View(reserves);
+            return View(reserves.ToPagedList(page ?? 1, 20));
         }
 
         public ActionResult Filter(DateTime? from, DateTime? to)

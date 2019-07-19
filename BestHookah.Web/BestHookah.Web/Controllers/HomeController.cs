@@ -3,28 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BestHookah.DAL;
+using BestHookah.BLL;
 
 namespace BestHookah.Web.Controllers
 {
     public class HomeController : Controller
     {
+        BestHookahEntities db = new BestHookahEntities();
+
         public ActionResult Index()
         {
+            ViewData["Reviews"] = HomeService.Review();
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult CreateReview(Reviews review, string message)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            ViewBag.Message = message;
+            return View(review);
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult CreateReview(Reviews review)
         {
-            ViewBag.Message = "Your contact page.";
+            string message = "";
 
-            return View();
+            if (HomeService.AddReview(review, out message))
+                return RedirectToAction("Index");
+            else
+                return RedirectToAction("CreateReview", new { review = review, message = message });
         }
     }
 }

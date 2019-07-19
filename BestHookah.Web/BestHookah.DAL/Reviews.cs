@@ -15,8 +15,8 @@ namespace BestHookah.DAL
     public partial class Reviews
     {
         public int ReviewId { get; set; }
-        public string ReviewName { get; set; }
-        public string ReviewAddress { get; set; }
+        public string UserName { get; set; }
+        public string UserAddress { get; set; }
         public string ReviewContent { get; set; }
     }
 }
