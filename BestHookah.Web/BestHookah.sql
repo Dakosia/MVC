@@ -268,7 +268,8 @@ GO
 INSERT INTO Reserves VALUES
 ('Client1', 'client1@gmail.com', '+77017654321', 'ClientMessage1', '06.30.2019'),
 ('Client2', 'client2@gmail.com', '+77057654321', 'ClientMessage2', '07.12.2019'),
-('Client3', 'client3@gmail.com', '+77777654321', 'ClientMessage3', '07.15.2019')
+('Client3', 'client3@gmail.com', '+77777654321', 'ClientMessage3', '07.15.2019'),
+('Client4', 'client4@gmail.com', '+77777777777', 'ClientMessage4', GETDATE())
 GO
 
 
