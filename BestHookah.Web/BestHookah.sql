@@ -278,8 +278,8 @@ GO
 CREATE TABLE Reviews
 (
 	ReviewId INT IDENTITY(1, 1) NOT NULL,
-	ReviewName VARCHAR(255) NOT NULL,
-	ReviewAddress VARCHAR(255) NOT NULL,
+	UserName VARCHAR(255) NOT NULL,
+	UserAddress VARCHAR(255) NOT NULL,
 	ReviewContent VARCHAR(255) NOT NULL,
 	CONSTRAINT PK_ReviewId PRIMARY KEY (ReviewId)
 )
@@ -292,6 +292,7 @@ INSERT INTO Reviews VALUES
 ('Sally Brown', 'Beverly Hills, Los Angeles, CA', 'Nice stuff and music cozy atmosphere the best hookah I ever tried in Los Angeles thanks for having us,gonna be back pretty soon. Came here on Saturday night and loved this place!'),
 ('Hara Harrison', 'Beverly Hills, Los Angeles, CA', 'Good vibe, the staff is amazing always attentive and friendly! The music is always on point! This hookah lounge is by far the best place to go! It doesn''t compare to any other place in the area.')
 GO
+
 
 
 SELECT * FROM MenuSections
