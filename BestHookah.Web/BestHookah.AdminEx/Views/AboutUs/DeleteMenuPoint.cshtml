@@ -1,0 +1,76 @@
+﻿@model BestHookah.DAL.MenuPoints
+
+@{
+    ViewBag.Title = "Delete Menu Point";
+}
+
+<h2>Delete Menu Point</h2>
+
+<p style="color: red">
+    @ViewBag.Message
+</p>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Menu Points</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.MenuPointId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointImagePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuSectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuSectionName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "MenuPointsList")
+        </div>
+    }
+</div>

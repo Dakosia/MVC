@@ -1,0 +1,70 @@
+﻿@model BestHookah.DAL.MenuPoints
+
+@{
+    ViewBag.Title = "Details Menu Point";
+}
+
+<h2>Details Menu Point</h2>
+
+<p style="color: red">
+    @ViewBag.Message
+</p>
+
+<div>
+    <h4>Menu Points</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.MenuPointId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuPointImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuPointImagePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuSectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuSectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditMenuPoint", new { MenuPointId = Model.MenuPointId }) |
+    @Html.ActionLink("Back to List", "MenuPointsList")
+</p>

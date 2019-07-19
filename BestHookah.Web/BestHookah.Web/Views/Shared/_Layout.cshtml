@@ -13,10 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Content/mt-includes/css/assets.min192b.css?_build=1541769650" />
     <style>
-    @@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic|Oswald:200,300,regular,500,600,700&amp;subset=latin);
+        @@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic|Oswald:200,300,regular,500,600,700&amp;subset=latin);
     </style>
     <link rel="stylesheet" href="/Content/mt-demo/74300/74314/mt-content/assets/stylesd6c9.css?_build=1542136535" id="moto-website-style" />
-
+    @RenderSection("Styles", false)
 </head>
 <body class="moto-background">
 
@@ -65,6 +65,8 @@
     </script>
     <script src="/Content/mt-includes/js/website.min2c01.js?_build=1541769699" type="text/javascript" data-cfasync="false"></script>
     <script type="text/javascript">$.fn.motoGoogleMap.setApiKey('AIzaSyAk8PGBXexyvCl_XGQDHqTfrNhZ1zYHFTI');</script>
+
+    @RenderSection("Scripts", false)
 
 </body>
 <!-- Mirrored from template74314.motopreview.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Nov 2018 17:10:26 GMT -->

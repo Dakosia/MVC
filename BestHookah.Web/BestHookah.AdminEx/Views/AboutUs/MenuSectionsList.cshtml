@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BestHookah.DAL.MenuSections>
+
+@{
+    ViewBag.Title = "Menu Sections List";
+}
+
+<h2>Menu Sections List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateMenuSection")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuSectionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuSectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuSectionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuSectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditMenuSection", new { MenuSectionId = item.MenuSectionId }) |
+            @Html.ActionLink("Details", "DetailsMenuSection", new { MenuSectionId = item.MenuSectionId }) |
+            @Html.ActionLink("Delete", "DeleteMenuSection", new { MenuSectionId = item.MenuSectionId })
+        </td>
+    </tr>
+}
+
+</table>

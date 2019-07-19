@@ -1,0 +1,38 @@
+﻿@model BestHookah.DAL.MenuSections
+
+@{
+    ViewBag.Title = "Details Menu Section";
+}
+
+<h2>Details Menu Section</h2>
+
+<p style="color: red">
+    @ViewBag.Message
+</p>
+
+<div>
+    <h4>Menu Sections</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.MenuSectionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuSectionId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuSectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuSectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditMenuSection", new { MenuSectionId = Model.MenuSectionId }) |
+    @Html.ActionLink("Back to List", "MenuSectionsList")
+</p>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BestHookah.DAL.BlogArticles>
+
+@{
+    ViewBag.Title = "Blog Articles List";
+}
+
+<h2>Blog Articles List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBlogArticle")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleAuthor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogArticleImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleCreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleAuthor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogArticleImagePath)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>

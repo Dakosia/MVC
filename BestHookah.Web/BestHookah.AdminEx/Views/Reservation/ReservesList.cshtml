@@ -1,0 +1,132 @@
+﻿@model IEnumerable<BestHookah.DAL.Reserves>
+
+@{
+    ViewBag.Title = "Reserves List";
+}
+
+<h2>Reserves List</h2>
+
+
+@using (Html.BeginForm("GetTodayReservesExcel", "Reservation"))
+{
+    <br />
+    <button type="submit" class="btn btn-primary">Download list of reserves for today</button>
+}
+<h2 class="h2">Reserves for today</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReserveId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReserveDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(r => r.ReserveDate.Date == DateTime.Now.Date))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReserveId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReserveDate)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>
+
+
+
+@using (Html.BeginForm("Filter", "Reservation"))
+{
+    <br />
+    <input name="From" type="date" />
+    <input name="To" type="date" />
+    <button type="submit" class="btn btn-success">Filter</button>
+}
+<h2 class="h2">Other reserves</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReserveId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReserveDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(r => r.ReserveDate.Date != DateTime.Now.Date))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReserveId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReserveDate)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>

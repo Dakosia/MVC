@@ -12,13 +12,11 @@ namespace BestHookah.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Reserves
+    public partial class Reviews
     {
-        public int ReserveId { get; set; }
-        public string ClientName { get; set; }
-        public string ClientEmail { get; set; }
-        public string ClientPhone { get; set; }
-        public string ClientMessage { get; set; }
-        public System.DateTime ReserveDate { get; set; }
+        public int ReviewId { get; set; }
+        public string ReviewName { get; set; }
+        public string ReviewAddress { get; set; }
+        public string ReviewContent { get; set; }
     }
 }

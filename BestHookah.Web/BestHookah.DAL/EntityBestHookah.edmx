@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BestHookahModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BestHookahModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BlogArticles">
           <Key>
             <PropertyRef Name="BlogArticleId" />
@@ -82,6 +82,16 @@
           <Property Name="ClientEmail" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ClientPhone" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ClientMessage" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ReserveDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReviewName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ReviewAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ReviewContent" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityContainer Name="BestHookahModelStoreContainer">
           <EntitySet Name="BlogArticles" EntityType="Self.BlogArticles" Schema="dbo" store:Type="Tables" />
@@ -92,9 +102,9 @@
           <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offers" EntityType="Self.Offers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserves" EntityType="Self.Reserves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BestHookahModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -175,6 +185,7 @@
           <Property Name="ClientEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ClientPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ClientMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReserveDate" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityContainer Name="BestHookahEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BlogArticles" EntityType="Self.BlogArticles" />
@@ -185,7 +196,17 @@
           <EntitySet Name="Notifications" EntityType="Self.Notifications" />
           <EntitySet Name="Offers" EntityType="Self.Offers" />
           <EntitySet Name="Reserves" EntityType="Self.Reserves" />
+          <EntitySet Name="Reviews" EntityType="BestHookahModel.Reviews" />
         </EntityContainer>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewContent" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -270,11 +291,22 @@
           <EntitySetMapping Name="Reserves">
             <EntityTypeMapping TypeName="BestHookahModel.Reserves">
               <MappingFragment StoreEntitySet="Reserves">
+                <ScalarProperty Name="ReserveDate" ColumnName="ReserveDate" />
                 <ScalarProperty Name="ReserveId" ColumnName="ReserveId" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
                 <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
                 <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
                 <ScalarProperty Name="ClientMessage" ColumnName="ClientMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="BestHookahModel.Reviews">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="ReviewContent" ColumnName="ReviewContent" />
+                <ScalarProperty Name="ReviewAddress" ColumnName="ReviewAddress" />
+                <ScalarProperty Name="ReviewName" ColumnName="ReviewName" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

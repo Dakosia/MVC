@@ -51,10 +51,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -156,7 +161,9 @@
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotificationsSettingsController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,10 +220,30 @@
     <Content Include="Views\AboutUs\DeleteBranch.cshtml" />
     <Content Include="Views\AboutUs\DetailsBranch.cshtml" />
     <Content Include="Views\AboutUs\EditBranch.cshtml" />
+    <Content Include="Views\AboutUs\MenuSectionsList.cshtml" />
+    <Content Include="Views\AboutUs\CreateMenuSection.cshtml" />
+    <Content Include="Views\AboutUs\EditMenuSection.cshtml" />
+    <Content Include="Views\AboutUs\DeleteMenuSection.cshtml" />
+    <Content Include="Views\AboutUs\DetailsMenuSection.cshtml" />
+    <Content Include="Views\AboutUs\MenuPointsList.cshtml" />
+    <Content Include="Views\AboutUs\CreateMenuPoint.cshtml" />
+    <Content Include="Views\AboutUs\EditMenuPoint.cshtml" />
+    <Content Include="Views\AboutUs\DeleteMenuPoint.cshtml" />
+    <Content Include="Views\AboutUs\DetailsMenuPoint.cshtml" />
+    <Content Include="Views\AboutUs\BlogArticlesList.cshtml" />
+    <Content Include="Views\AboutUs\CreateBlogArticle.cshtml" />
+    <Content Include="Views\NotificationsSettings\Index.cshtml" />
+    <Content Include="Views\NotificationsSettings\CreateUser.cshtml" />
+    <Content Include="Views\NotificationsSettings\EditUser.cshtml" />
+    <Content Include="Views\NotificationsSettings\DeleteUser.cshtml" />
+    <Content Include="Views\NotificationsSettings\DetailsUser.cshtml" />
+    <Content Include="Views\Reservation\ReservesList.cshtml" />
+    <Content Include="Uploads\Reservations.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BestHookah.DAL.MenuPoints>
+
+@{
+    ViewBag.Title = "Menu Points List";
+}
+
+<h2>Menu Points List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateMenuPoint")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuPointId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuPointName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuPointPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuPointDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuPointImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuSectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuPointId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuPointName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuPointPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuPointDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuPointImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuSectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditMenuPoint", new { MenuPointId = item.MenuPointId }) |
+            @Html.ActionLink("Details", "DetailsMenuPoint", new { MenuPointId = item.MenuPointId }) |
+            @Html.ActionLink("Delete", "DeleteMenuPoint", new { MenuPointId = item.MenuPointId })
+        </td>
+    </tr>
+}
+
+</table>

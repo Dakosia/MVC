@@ -17,16 +17,24 @@ namespace BestHookah.Web.Controllers
             return View();
         }
 
-        // GET: ContactUs
-        public ActionResult ContactUs()
+        // GET: Menu
+        public ActionResult Menu()
         {
-            List<Branches> branches = db.Branches.ToList();
-
-            return View(branches);
+            return View();
         }
 
         // GET: HookahBarDrinks
         public ActionResult HookahBarDrinks()
+        {
+            List<MenuPoints> menuPoints = db.MenuPoints.ToList();
+            List<MenuSections> menuSections = db.MenuSections.ToList();
+            ViewData["menuSections"] = menuSections;
+
+            return View(menuPoints);
+        }
+
+        // GET: Events
+        public ActionResult Events()
         {
             return View();
         }
@@ -34,7 +42,17 @@ namespace BestHookah.Web.Controllers
         // GET: Blog
         public ActionResult Blog()
         {
-            return View();
+            List<BlogArticles> blogArticles = db.BlogArticles.ToList();
+
+            return View(blogArticles);
+        }
+
+        // GET: ContactUs
+        public ActionResult ContactUs()
+        {
+            List<Branches> branches = db.Branches.ToList();
+
+            return View(branches);
         }
     }
 }
