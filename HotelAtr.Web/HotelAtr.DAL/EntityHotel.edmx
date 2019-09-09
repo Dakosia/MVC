@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище HotelAtrModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomOptionsId" Type="int" />
+          <Property Name="RoomId" Type="int" />
+        </EntityType>
+        <EntityType Name="RoomOptions">
+          <Key>
+            <PropertyRef Name="RoomOptionsId" />
+          </Key>
+          <Property Name="RoomOptionsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Room_RoomId" Type="int" />
+        </EntityType>
+        <EntityType Name="RoomReserve">
+          <Key>
+            <PropertyRef Name="RoomReserveId" />
+          </Key>
+          <Property Name="RoomReserveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Arrive" Type="date" />
+          <Property Name="Departure" Type="date" />
+          <Property Name="Adults" Type="int" />
+          <Property Name="Children" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="PathBasePicture" Type="nvarchar(max)" />
+          <Property Name="RoomTypeId" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="RoomOptions" Type="Self.RoomOptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomOptions">
+              <PropertyRef Name="Room_RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Rooms_Table_RoomType_RoomTypeId">
+          <End Role="RoomType" Type="Self.RoomType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Options_RoomOptions">
+          <End Role="RoomOptions" Type="Self.RoomOptions" Multiplicity="0..1" />
+          <End Role="Options" Type="Self.Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomOptions">
+              <PropertyRef Name="RoomOptionsId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="RoomOptionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Options_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="Options" Type="Self.Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomReserve_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="RoomReserve" Type="Self.RoomReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomReserve">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище HotelAtrModelContainer">
+          <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomOptions" EntityType="Self.RoomOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomReserve" EntityType="Self.RoomReserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomType" EntityType="Self.RoomType" Schema="Table" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId" Association="Self.FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RoomOptions" EntitySet="RoomOptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Rooms_Table_RoomType_RoomTypeId" Association="Self.FK_dbo_Rooms_Table_RoomType_RoomTypeId">
+            <End Role="RoomType" EntitySet="RoomType" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Options_RoomOptions" Association="Self.FK_Options_RoomOptions">
+            <End Role="RoomOptions" EntitySet="RoomOptions" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Options_Rooms" Association="Self.FK_Options_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomReserve_Rooms" Association="Self.FK_RoomReserve_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RoomReserve" EntitySet="RoomReserve" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelAtrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RoomOptions">
+          <Key>
+            <PropertyRef Name="RoomOptionsId" />
+          </Key>
+          <Property Name="RoomOptionsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Room_RoomId" Type="Int32" />
+          <NavigationProperty Name="Rooms" Relationship="Self.FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId" FromRole="RoomOptions" ToRole="Rooms" />
+          <NavigationProperty Name="Options" Relationship="HotelAtrModel.FK_Options_RoomOptions" FromRole="RoomOptions" ToRole="Options" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PathBasePicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoomOptions" Relationship="Self.FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId" FromRole="Rooms" ToRole="RoomOptions" />
+          <NavigationProperty Name="RoomType" Relationship="HotelAtrModel.FK_dbo_Rooms_Table_RoomType_RoomTypeId" FromRole="Rooms" ToRole="RoomType" />
+          <NavigationProperty Name="RoomReserve" Relationship="HotelAtrModel.FK_RoomReserve_Rooms" FromRole="Rooms" ToRole="RoomReserve" />
+          <NavigationProperty Name="Options" Relationship="HotelAtrModel.FK_Options_Rooms" FromRole="Rooms" ToRole="Options" />
+        </EntityType>
+        <Association Name="FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="RoomOptions" Type="Self.RoomOptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomOptions">
+              <PropertyRef Name="Room_RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelAtrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RoomOptions" EntityType="Self.RoomOptions" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" />
+          <AssociationSet Name="FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId" Association="Self.FK_dbo_RoomOptions_dbo_Rooms_Room_RoomId">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RoomOptions" EntitySet="RoomOptions" />
+          </AssociationSet>
+          <EntitySet Name="RoomType" EntityType="HotelAtrModel.RoomType" />
+          <AssociationSet Name="FK_dbo_Rooms_Table_RoomType_RoomTypeId" Association="HotelAtrModel.FK_dbo_Rooms_Table_RoomType_RoomTypeId">
+            <End Role="RoomType" EntitySet="RoomType" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <EntitySet Name="RoomReserve" EntityType="HotelAtrModel.RoomReserve" />
+          <AssociationSet Name="FK_RoomReserve_Rooms" Association="HotelAtrModel.FK_RoomReserve_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RoomReserve" EntitySet="RoomReserve" />
+          </AssociationSet>
+          <EntitySet Name="Options" EntityType="HotelAtrModel.Options" />
+          <AssociationSet Name="FK_Options_RoomOptions" Association="HotelAtrModel.FK_Options_RoomOptions">
+            <End Role="RoomOptions" EntitySet="RoomOptions" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Options_Rooms" Association="HotelAtrModel.FK_Options_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rooms" Relationship="HotelAtrModel.FK_dbo_Rooms_Table_RoomType_RoomTypeId" FromRole="RoomType" ToRole="Rooms" />
+        </EntityType>
+        <Association Name="FK_dbo_Rooms_Table_RoomType_RoomTypeId">
+          <End Type="HotelAtrModel.RoomType" Role="RoomType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HotelAtrModel.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RoomReserve">
+          <Key>
+            <PropertyRef Name="RoomReserveId" />
+          </Key>
+          <Property Name="RoomReserveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Arrive" Type="DateTime" Precision="0" />
+          <Property Name="Departure" Type="DateTime" Precision="0" />
+          <Property Name="Adults" Type="Int32" />
+          <Property Name="Children" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="RoomId" Type="Int32" />
+          <NavigationProperty Name="Rooms" Relationship="HotelAtrModel.FK_RoomReserve_Rooms" FromRole="RoomReserve" ToRole="Rooms" />
+          <Property Name="StatusId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_RoomReserve_Rooms">
+          <End Type="HotelAtrModel.Rooms" Role="Rooms" Multiplicity="0..1" />
+          <End Type="HotelAtrModel.RoomReserve" Role="RoomReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomReserve">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomOptionsId" Type="Int32" />
+          <Property Name="RoomId" Type="Int32" />
+          <NavigationProperty Name="RoomOptions" Relationship="HotelAtrModel.FK_Options_RoomOptions" FromRole="Options" ToRole="RoomOptions" />
+          <NavigationProperty Name="Rooms" Relationship="HotelAtrModel.FK_Options_Rooms" FromRole="Options" ToRole="Rooms" />
+        </EntityType>
+        <Association Name="FK_Options_RoomOptions">
+          <End Type="HotelAtrModel.RoomOptions" Role="RoomOptions" Multiplicity="0..1" />
+          <End Type="HotelAtrModel.Options" Role="Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomOptions">
+              <PropertyRef Name="RoomOptionsId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="RoomOptionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Options_Rooms">
+          <End Type="HotelAtrModel.Rooms" Role="Rooms" Multiplicity="0..1" />
+          <End Type="HotelAtrModel.Options" Role="Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HotelAtrModelContainer" CdmEntityContainer="HotelAtrEntities">
+          <EntitySetMapping Name="RoomOptions">
+            <EntityTypeMapping TypeName="HotelAtrModel.RoomOptions">
+              <MappingFragment StoreEntitySet="RoomOptions">
+                <ScalarProperty Name="RoomOptionsId" ColumnName="RoomOptionsId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Room_RoomId" ColumnName="Room_RoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="HotelAtrModel.Rooms">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PathBasePicture" ColumnName="PathBasePicture" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomType">
+            <EntityTypeMapping TypeName="HotelAtrModel.RoomType">
+              <MappingFragment StoreEntitySet="RoomType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomReserve">
+            <EntityTypeMapping TypeName="HotelAtrModel.RoomReserve">
+              <MappingFragment StoreEntitySet="RoomReserve">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Children" ColumnName="Children" />
+                <ScalarProperty Name="Adults" ColumnName="Adults" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Arrive" ColumnName="Arrive" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="RoomReserveId" ColumnName="RoomReserveId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="HotelAtrModel.Options">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="RoomOptionsId" ColumnName="RoomOptionsId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

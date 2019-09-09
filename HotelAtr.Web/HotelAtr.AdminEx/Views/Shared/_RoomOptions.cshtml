@@ -1,0 +1,10 @@
+﻿@using HotelAtr.DAL
+@model List<Options>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li RoomOptionsId="@item.OptionId">@item.RoomOptions.Name</li>
+
+    }
+</ul>

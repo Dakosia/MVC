@@ -1,0 +1,275 @@
+﻿@using HotelAtr.DAL
+@using HotelAtr.Web.Models
+@model Rooms
+
+@{
+    ViewBag.Title = "Room Detail";
+    ViewBag.Description = "Some Descritption";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+
+
+<!-- Room Details Area Start -->
+<section class="room-details pt-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-8">
+                <div class="room-slider-wrapper">
+                    <div class="room-slider">
+
+                        @MyHtmlHelper.CreatePriceDescription(Model.Price)
+
+                        @*<div class="slider-image">
+                                <img src="img/room/l-1.jpg" alt="">
+                                <div class="cost">
+                                    <h2>$ @Model.Price</h2>
+                                    <span>Per Night</span>
+                                </div>
+                            </div>*@
+
+
+
+                        <div class="slider-image">
+                            <img src="img/room/l-2.jpg" alt="">
+                            <div class="cost">
+                                <h2>$ 150</h2>
+                                <span>Per Night</span>
+                            </div>
+                        </div>
+                        <div class="slider-image">
+                            <img src="img/room/l-3.jpg" alt="">
+                            <div class="cost">
+                                <h2>$ 120</h2>
+                                <span>Per Night</span>
+                            </div>
+                        </div>
+                        <div class="slider-image">
+                            <img src="img/room/l-4.jpg" alt="">
+                            <div class="cost">
+                                <h2>$ 220</h2>
+                                <span>Per Night</span>
+                            </div>
+                        </div>
+                        <div class="slider-image">
+                            <img src="img/room/l-5.jpg" alt="">
+                            <div class="cost">
+                                <h2>$ 170</h2>
+                                <span>Per Night</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row nav-row">
+                        <div class="slider-nav">
+                            <div class="nav-image">
+                                <img src="img/room/s-1.jpg" alt="">
+                            </div>
+                            <div class="nav-image">
+                                <img src="img/room/s-2.jpg" alt="">
+                            </div>
+                            <div class="nav-image">
+                                <img src="img/room/s-3.jpg" alt="">
+                            </div>
+                            <div class="nav-image">
+                                <img src="img/room/s-4.jpg" alt="">
+                            </div>
+                            <div class="nav-image">
+                                <img src="img/room/s-5.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-details-text">
+                    <h3 class="room-details-title">description of room</h3>
+                    @Model.Description
+
+
+                    @MyHtmlHelper.CreatePriceDescription(Model.Price)
+
+
+                </div>
+                <div class="room-facilities">
+                    <h3 class="room-details-title">room facilities</h3>
+                    <div class="single-facility">
+                        <span><i class="zmdi zmdi-check"></i>Single Room</span>
+                        <span><i class="zmdi zmdi-check"></i>70 sq mt</span>
+                        <span><i class="zmdi zmdi-check"></i>3 Persons</span>
+                        <span><i class="zmdi zmdi-check"></i>Free Internet</span>
+                    </div>
+                    <div class="single-facility">
+                        <span><i class="zmdi zmdi-check"></i>Breakfast Inclide</span>
+                        <span><i class="zmdi zmdi-close"></i>Free wi-fi</span>
+                        <span><i class="zmdi zmdi-check"></i>Private Balcony</span>
+                        <span><i class="zmdi zmdi-check"></i>Free Newspaper</span>
+                    </div>
+                    <div class="single-facility">
+                        <span><i class="zmdi zmdi-check"></i>Full AC</span>
+                        <span><i class="zmdi zmdi-close"></i>Flat Screen TV</span>
+                        <span><i class="zmdi zmdi-check"></i>Beach View</span>
+                        <span><i class="zmdi zmdi-close"></i>Room Service</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                {
+                    <h1>@ViewBag.Message</h1>
+                }
+                else
+                {
+                    @Html.Partial("Room/_RoomReserve", Model.RoomId)
+                }
+                <div class="sidebar-widget">
+                    <div class="c-info-text">
+                        <p>If you have any question please don't hesitate to contact us</p>
+                    </div>
+                    <div class="c-info">
+                        <span><i class="zmdi zmdi-phone"></i></span>
+                        <span>+660 256 24857<br>+660 256 24857</span>
+                    </div>
+                    <div class="c-info">
+                        <span><i class="zmdi zmdi-email"></i></span>
+                        <span>devitems@gmail.com<br>support@devitems.com</span>
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <h3 class="room-details-title">popular posts</h3>
+                    <div class="post-content">
+                        <div class="post-img">
+                            <a href="#" class="block"><img src="img/sidebar/1.jpg" alt=""></a>
+                        </div>
+                        <div class="post-text">
+                            <h4><a href="#">post demo title</a></h4>
+                            <span>22 Dec, 2017</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-img">
+                            <a href="#" class="block"><img src="img/sidebar/2.jpg" alt=""></a>
+                        </div>
+                        <div class="post-text">
+                            <h4><a href="#">post demo title</a></h4>
+                            <span>10 Feb, 2017</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-img">
+                            <a href="#" class="block"><img src="img/sidebar/3.jpg" alt=""></a>
+                        </div>
+                        <div class="post-text">
+                            <h4><a href="#">post demo title</a></h4>
+                            <span>06 Mar, 2017</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="room-area">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="room-details-title">similar rooms</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="single-room small">
+                <img src="img/room/1.jpg" alt="">
+                <h3>Royal Suit</h3>
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3><a href="room-details.html">Royal Suit</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$220</span>
+                        <span class="count">Per Night</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-room large">
+                <img src="img/room/2.jpg" alt="">
+                <h3>Deluxe Suit</h3>
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3><a href="room-details.html">Deluxe Suit</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$150</span>
+                        <span class="count">Per Night</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-room small">
+                <img src="img/room/3.jpg" alt="">
+                <h3>Single Room</h3>
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3><a href="room-details.html">Single Room</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$120</span>
+                        <span class="count">Per Night</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-room medium">
+                <img src="img/room/4.jpg" alt="">
+                <h3>Double Room</h3>
+                <div class="room-hover text-center">
+                    <div class="hover-text">
+                        <h3><a href="room-details.html">Double Room</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="room-btn">
+                            <a href="room-details.html" class="default-btn">DETAILS</a>
+                        </div>
+                    </div>
+                    <div class="p-amount">
+                        <span>$100</span>
+                        <span class="count">Per Night</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Room Details Area End -->
+
+@section Scripts
+{
+    <script src="~/Content/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/bootstrap-datepicker/js/locales/bootstrap-datepicker.ru.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var array = ["2019-07-14", "2019-07-15", "2019-07-16"]
+
+            $(".datepicker").datepicker({
+                dateFormat: 'dd-mm-yy',
+                //beforeShowDay: function (date) {
+                //    console.log(date);
+                //    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                //    return [array.indexOf(string) == -1]
+                //}
+            });
+        });
+    </script>
+}
+
+@section Styles
+{
+    <link href="~/Content/bootstrap-datepicker/css/datepicker.css" />
+}

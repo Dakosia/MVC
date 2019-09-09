@@ -1,0 +1,90 @@
+﻿@model IEnumerable<HotelAtr.DAL.RoomReserve>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arrive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adults)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Children)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr
+        
+        @if (item.StatusId == 0)
+        {
+            <text>style="background-color:cornflowerblue"</text>
+        }
+        else if (item.StatusId == 1)
+        {
+            <text>style="background-color:green"</text>
+        }
+        else
+        {
+            <text>style="background-color:red"</text>
+        }
+         >
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arrive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adults)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Children)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditRoomReserve", new { RoomReserveId = item.RoomReserveId }) |
+            @Html.ActionLink("Approve", "ApproveRoomReserve", new { RoomReserveId = item.RoomReserveId }) |
+            @Html.ActionLink("Decline", "DeclineRoomReserve", new { RoomReserveId = item.RoomReserveId }) |
+            @Html.ActionLink("Delete", "DeleteRoomReserve", new { RoomReserveId = item.RoomReserveId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model int
+
+<div class="sidebar-widget">
+    <h3 class="room-details-title">your reservation</h3>
+    @using (Html.BeginForm("RoomReserve", "Room", FormMethod.Post, new { @class = "search-form" }))
+    {
+        <div class="form-container fix">
+            <div class="box-select">
+                @Html.Hidden("RoomId", Model)
+                <div class="select">
+                    @Html.TextBox("FullName")
+                </div>
+                <div class="select">
+                    @Html.TextBox("Phone")
+                </div>
+                <div class="select date input-group">
+                    @Html.TextBox("Arrive",null, new { @class = "datepicker" })
+                </div>
+                <div class="select date input-group">
+                    @Html.TextBox("Departure",null, new { @class = "datepicker" })
+                </div>
+                <div class="select arrow">
+                    <select name="Adults">
+                        <option>ADULTS</option>
+                        @foreach (string item in ViewBag.AdultsList)
+                        {
+                            <option>@item</option>
+                        }
+                    </select>
+                </div>
+                <div class="select arrow">
+                    <select name="children">
+                        <option>CHILDREN</option>
+                        @foreach (string item in ViewBag.ChildrenList)
+                        {
+                            <option>@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="search default-btn">Check Availability</button>
+        </div>
+
+    }
+</div>

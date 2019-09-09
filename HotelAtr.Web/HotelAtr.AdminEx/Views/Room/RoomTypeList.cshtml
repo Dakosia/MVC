@@ -1,0 +1,33 @@
+﻿@model IEnumerable<HotelAtr.DAL.RoomType>
+
+@{
+    ViewBag.Title = "RoomTypeList";
+}
+
+<h2>RoomTypeList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateRoomType")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditRoomType", new { id=item.RoomTypeId }) |
+            @Html.ActionLink("Details", "DetailsRoomType", new { id=item.RoomTypeId }) |
+            @Html.ActionLink("Delete", "DeleteRoomType", new { id=item.RoomTypeId })
+        </td>
+    </tr>
+}
+
+</table>

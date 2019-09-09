@@ -1,0 +1,142 @@
+﻿@using HotelAtr.DAL
+@model HotelAtr.DAL.Rooms
+
+@{
+    ViewBag.Title = "EditRoom";
+}
+
+<h2>EditRoom</h2>
+
+
+@using (Html.BeginForm("EditRoom", "Room", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Rooms</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.RoomId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PathBasePicture, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PathBasePicture, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PathBasePicture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RoomTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" name="RoomTypeId">
+                <option selected="selected">Choose Room Type</option>
+                @foreach (RoomType item in ViewBag.RoomTypeList)
+                {
+                    <option value="@item.RoomTypeId">@item.Description</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.RoomTypeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Floor, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Floor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Floor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Фото основное</label>
+        <div class="col-md-10">
+            <input type="file" name="BasePhoto" class="form-control" />
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        <select class="form-control" id="RoomOptionsId" name="RoomOptionsId">
+            <option selected="selected">Choose Room Type</option>
+            @foreach (RoomOptions item in ViewBag.RoomOptionsList)
+            {
+                <option value="@item.RoomOptionsId">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+        <button id="AddOptions">Add</button>
+    </div>
+</div>
+<hr />
+
+<div id="Result"></div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+    $(document).ready(function () {
+        $("#AddOptions").on("click", function () {
+          
+            $.post('/Room/AddRoomOptions',
+                { RoomId: '@Model.RoomId',
+                    RoomOptionsId: $("#RoomOptionsId").val() },
+                function (data) {
+
+                    console.log(data.Error);
+
+                    if (data.Error == "NotAuthorized") {
+                        window.location.replace(data.LogOnUrl);
+                    }
+                    else {
+                        $("#Result").html(data);
+                    }
+                    
+            })
+
+        })
+
+    })
+    </script>
+}
