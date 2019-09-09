@@ -1,0 +1,35 @@
+﻿@using WebApplication1.Models
+@model IEnumerable<AppUser>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Email</td>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">Нет данных</td>
+        </tr>
+    }
+    else
+    {
+        foreach (AppUser user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    }
+</table>
+
+@Html.ActionLink("Создать","Create","")
+
