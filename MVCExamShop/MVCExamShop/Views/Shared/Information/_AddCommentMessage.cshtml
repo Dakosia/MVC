@@ -1,0 +1,21 @@
+﻿@using MVCExamShop.DAL
+@using System.Globalization
+@model Comment
+
+<div class="view-comment">
+    <div class="panel-default comment-content">
+        <div class="comment-icon"><i class="fa fa-comments"></i></div>
+        <div class="commnet-left">
+            <div class="com-author">@Model.Author</div>
+            <div class="com-date">@*09,Apr,2018*@ @Model.CommentCreationDate.Day,@Model.CommentCreationDate.ToString("MMM", CultureInfo.InvariantCulture),@Model.CommentCreationDate.Year</div>
+        </div>
+        <div class="commnet-right">
+            <div class="com-data">@Model.UserComment</div>
+        </div>
+    </div>
+</div>
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
+

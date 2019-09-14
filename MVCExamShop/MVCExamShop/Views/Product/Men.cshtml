@@ -1,0 +1,787 @@
+﻿@using MVCExamShop.DAL
+@model List<Product>
+
+@{
+    ViewBag.Title = "Men";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div id="product-category" class="container">
+    <ul class="breadcrumb">
+        <li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
+        <li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20">Men</a></li>
+    </ul>
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <div class="box category">
+                <div class="box-heading">Categories</div>
+                <div class="box-content">
+                    <ul class="box-category treeview-list treeview">
+                        <li>
+                            <a href="@Url.Action("Men", "Product")" class="active">Men </a>
+                            <ul>
+                                <li>
+                                    <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20_62">Watches</a>
+                                </li>
+                                <li>
+                                    <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20_26">Footwear</a>
+                                </li>
+                                <li>
+                                    <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20_27">Men's Grooming</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=25">Women</a>
+                        </li>
+                        <li>
+                            <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=57">Baby &amp; Kids</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box sidebarFilter">
+                <div class="box-heading">Refine Search</div>
+                <div class="filterbox">
+                    <div class="list-group-filter">
+                        <div class="filter-content">
+                            <div class="list-group-item title">Price</div>
+                            <div class="list-group-item">
+                                <div id="filter-group1">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="1">
+                                            $0-$49
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="2">
+                                            $50-$100
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="3">
+                                            $100-$150
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="4">
+                                            $150-above
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-content">
+                            <div class="list-group-item title">Size</div>
+                            <div class="list-group-item">
+                                <div id="filter-group2">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="5">
+                                            Large
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="6">
+                                            Medium
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="7">
+                                            Small
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-content">
+                            <div class="list-group-item title">Color</div>
+                            <div class="list-group-item">
+                                <div id="filter-group3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="8">
+                                            Pink
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="9">
+                                            Yellow
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="10">
+                                            Blue
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="filter[]" value="11">
+                                            Green
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <button type="button" id="button-filter" class="btn btn-primary">Refine Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+<!--
+                $('#button-filter').on('click', function () {
+                    filter = [];
+
+                    $('input[name^=\'filter\']:checked').each(function (element) {
+                        filter.push(this.value);
+                    });
+
+                    location = 'http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&path=20&filter=' + filter.join(',');
+                });
+                //--></script>
+
+
+
+            <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+            <title>Untitled Document</title>
+
+
+
+
+
+
+            <!-- <div class="swiper-viewport"> -->
+            <div id="banner0" class="single-banner swiper-container-horizontal swiper-container-fade">
+                <!-- <div class="swiper-wrapper"> -->
+                <div class="item">
+                    <a href="#">
+                        <img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/Left-Banner-265x322.jpg" alt="LeftBanner1" class="img-responsive">
+                    </a>
+                </div>
+                <!-- </div> -->
+                <!-- If we need pagination -->
+                <!-- <div class="swiper-pagination"></div> -->
+            </div>
+            <!-- </div> -->
+            <script type="text/javascript">
+<!--
+                $('#banner0').swiper({
+                    effect: 'fade',
+                    autoplay: 2500,
+                    pagination: '.swiper-pagination',  // If we need pagination
+                    autoplayDisableOnInteraction: false
+                });
+                --></script>
+        </aside>
+
+        <div id="content" class="col-sm-9 category">
+            <h1>Men</h1>
+
+            <div class="category-top">
+                <div class="category_thumb">
+                    <div class="col-sm-2 category_img"><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/Cat-banner-864x190.jpg" alt="Men" title="Men" class="img-thumbnail"></div>
+
+                    <div class="col-sm-10 category_description">
+                        <p>
+                            Example of category description text
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="refine-search">Refine Search</h3>
+            <div class="row">
+                <div class="col-sm-12 category_list">
+                    <ul>
+                        <li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20_62">Watches</a></li>
+                        <li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20_26">Footwear</a></li>
+                        <li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20_27">Men's Grooming</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="category_filter">
+                <div class="col-md-4 btn-list-grid">
+                    <div class="btn-group">
+
+                        <button type="button" id="grid-view" class="btn btn-default grid" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>
+                        <button type="button" id="list-view" class="btn btn-default list" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i></button>
+                    </div>
+                </div>
+                <div class="compare-total"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/compare" id="compare-total"> Product Compare (0)</a></div>
+                <div class="pagination-right">
+                    <div class="show-wrapper">
+                        <div class="col-md-1 text-right show">
+                            <label class="control-label" for="input-limit">Show:</label>
+                        </div>
+                        <div class="col-md-2 text-right limit">
+                            <select id="input-limit" class="form-control" onchange="location = this.value;">
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;limit=6 " selected="selected">6</option>
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;limit=25 ">25 </option>
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;limit=50 ">50 </option>
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;limit=75 ">75 </option>
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;limit=100 ">100 </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sort-by-wrapper">
+                        <div class="col-md-2 text-right sort-by">
+                            <label class="control-label" for="input-sort">Sort By:</label>
+                        </div>
+                        <div class="col-md-3 text-right sort">
+                            <select id="input-sort" class="form-control" onchange="location = this.value;">
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=p.sort_order&amp;order=ASC " selected="selected">Default</option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=pd.name&amp;order=ASC ">Name (A - Z) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=pd.name&amp;order=DESC ">Name (Z - A) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=p.price&amp;order=ASC ">Price (Low &gt; High) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=p.price&amp;order=DESC ">Price (High &gt; Low) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=rating&amp;order=DESC ">Rating (Highest) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=rating&amp;order=ASC ">Rating (Lowest) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=p.model&amp;order=ASC ">Model (A - Z) </option>
+
+                                <option value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;sort=p.model&amp;order=DESC ">Model (Z - A) </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row category-product">
+                @foreach (Product product in Model.Where(p => p.CategoryId == 1))
+                {
+                    <div class="product-layout product-list col-xs-12">
+                        <div class="product-block product-thumb">
+                            <div class="product-block-inner">
+                                <div class="image">
+                                    <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=41 "><img src="@product.ProductImagePath" alt="@product.ProductName" title="@product.ProductName" class="img-responsive"></a>
+                                    <div class="saleback">
+                                        <span class="saleicon sale">Sale</span>
+                                    </div>
+
+                                </div>
+                                <div class="product-details">
+                                    <div class="caption">
+
+
+                                        <div class="rating">
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        </div>
+
+                                        <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=41">@product.ProductName</a></h5>
+
+                                        <div class="rating list">
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        </div>
+
+                                        <p class="desc">@product.ProductDescriptionInText</p>
+                                        <p class="price">
+                                            @if (product.ProductOldPrice != null)
+                                            {
+                                                <span class="price-old">$@product.ProductOldPrice</span>
+                                            }
+                                            <span class="price-new">$@product.ProductNewPrice</span>
+                                            <span class="price-tax">Ex Tax: $@product.ProductExTaxPrice</span>
+                                        </p>
+
+                                        <div class="button-group grid">
+                                            <button type="button" onclick="cart.add('41 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                            <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+                                            <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('41 ');"></button>
+
+                                            <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=41"></a></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="list-right">
+                                        <p class="price">
+                                            @if (product.ProductOldPrice != null)
+                                            {
+                                                <span class="price-old">$@product.ProductOldPrice</span>
+                                            }
+                                            <span class="price-new">$@product.ProductNewPrice</span>
+                                            <span class="price-tax">Ex Tax: $@product.ProductExTaxPrice</span>
+                                        </p>
+
+                                        <div class="button-group list">
+                                            <button type="button" onclick="cart.add('41 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                            <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+                                            <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('41 ');"></button>
+
+                                            <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=41"></a></div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                @*<div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=41 "><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/5-263x319.jpg" alt="Asian Shoes Lr-71 Women's" title="Asian Shoes Lr-71 Women's" class="img-responsive"></a>
+                                <div class="saleback">
+                                    <span class="saleicon sale">Sale</span>
+                                </div>
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=41">Asian Shoes Lr-71 Women's</a></h5>
+
+                                    <div class="rating list">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <p class="desc">There are a wide variety of different types of shoes. Most types of shoes are designed for specific ..</p>
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span><span class="price-new">$86.00</span>
+                                        <span class="price-tax">Ex Tax: $70.00</span>
+                                    </p>
+
+                                    <div class="button-group grid">
+                                        <button type="button" onclick="cart.add('41 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+                                        <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('41 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=41"></a></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-right">
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span> <span class="price-new">$86.00</span>
+                                        <span class="price-tax">Ex Tax: $70.00</span>
+                                    </p>
+
+                                    <div class="button-group list">
+                                        <button type="button" onclick="cart.add('41 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+                                        <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('41 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=41"></a></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=30 "><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/2-263x319.jpg" alt="Beautiful Embroidered Black Abaya" title="Beautiful Embroidered Black Abaya" class="img-responsive"></a>
+                                <div class="saleback">
+                                    <span class="saleicon sale">Sale</span>
+                                </div>
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=30">Beautiful Embroidered Black Abaya</a></h5>
+
+                                    <div class="rating list">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <p class="desc">Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category', while we're n..</p>
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span><span class="price-new">$98.00</span>
+                                        <span class="price-tax">Ex Tax: $80.00</span>
+                                    </p>
+
+                                    <div class="button-group grid">
+                                        <button type="button" onclick="cart.add('30 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('30 ');"></button>
+                                        <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('30 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=30"></a></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-right">
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span> <span class="price-new">$98.00</span>
+                                        <span class="price-tax">Ex Tax: $80.00</span>
+                                    </p>
+
+                                    <div class="button-group list">
+                                        <button type="button" onclick="cart.add('30 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('30 ');"></button>
+                                        <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('30 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=30"></a></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=42 "><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/1-263x319.jpg" alt="Butterflies Women's Handbag" title="Butterflies Women's Handbag" class="img-responsive"></a>
+                                <div class="saleback">
+                                    <span class="saleicon sale">Sale</span>
+                                </div>
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=42">Butterflies Women's Handbag</a></h5>
+
+                                    <div class="rating list">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <p class="desc">The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed speci..</p>
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span><span class="price-new">$110.00</span>
+                                        <span class="price-tax">Ex Tax: $90.00</span>
+                                    </p>
+
+                                    <div class="button-group grid">
+                                        <button type="button" onclick="cart.add('42 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
+                                        <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('42 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=42"></a></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-right">
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span> <span class="price-new">$110.00</span>
+                                        <span class="price-tax">Ex Tax: $90.00</span>
+                                    </p>
+
+                                    <div class="button-group list">
+                                        <button type="button" onclick="cart.add('42 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
+                                        <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('42 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=42"></a></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=33 "><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/18-263x319.jpg" alt="Caprese Women's Handbag" title="Caprese Women's Handbag" class="img-responsive"></a>
+                                <div class="saleback">
+                                    <span class="saleicon sale">Sale</span>
+                                </div>
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=33">Caprese Women's Handbag</a></h5>
+
+                                    <div class="rating list">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <p class="desc">Imagine the advantages of going big without slowing down. The big 19" 941BW monitor combines wi..</p>
+                                    <p class="price">
+                                        <span class="price-old">$242.00</span><span class="price-new">$14.00</span>
+                                        <span class="price-tax">Ex Tax: $10.00</span>
+                                    </p>
+
+                                    <div class="button-group grid">
+                                        <button type="button" onclick="cart.add('33 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('33 ');"></button>
+                                        <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('33 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=33"></a></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-right">
+                                    <p class="price">
+                                        <span class="price-old">$242.00</span> <span class="price-new">$14.00</span>
+                                        <span class="price-tax">Ex Tax: $10.00</span>
+                                    </p>
+
+                                    <div class="button-group list">
+                                        <button type="button" onclick="cart.add('33 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('33 ');"></button>
+                                        <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('33 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=33"></a></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=43 "><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/11-263x319.jpg" alt="Conifer Symmetry Briefcase Bag" title="Conifer Symmetry Briefcase Bag" class="img-responsive"></a>
+                                <div class="saleback">
+                                    <span class="saleicon sale">Sale</span>
+                                </div>
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=43">Conifer Symmetry Briefcase Bag</a></h5>
+
+                                    <div class="rating list">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <p class="desc">
+                                        Intel Core 2 Duo processor
+
+                                        Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, t..
+                                    </p>
+                                    <p class="price">
+                                        <span class="price-old">$602.00</span><span class="price-new">$62.00</span>
+                                        <span class="price-tax">Ex Tax: $50.00</span>
+                                    </p>
+
+                                    <div class="button-group grid">
+                                        <button type="button" onclick="cart.add('43 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('43 ');"></button>
+                                        <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('43 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=43"></a></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-right">
+                                    <p class="price">
+                                        <span class="price-old">$602.00</span> <span class="price-new">$62.00</span>
+                                        <span class="price-tax">Ex Tax: $50.00</span>
+                                    </p>
+
+                                    <div class="button-group list">
+                                        <button type="button" onclick="cart.add('43 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('43 ');"></button>
+                                        <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('43 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=43"></a></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-block product-thumb">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=36 "><img src="http://opencart.templatemela.com/OPCADD2/OPC036/image/cache/catalog/8-263x319.jpg" alt="Corum Golden Bridge watch" title="Corum Golden Bridge watch" class="img-responsive"></a>
+                                <div class="saleback">
+                                    <span class="saleicon sale">Sale</span>
+                                </div>
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <h5><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/product&amp;path=20&amp;product_id=36">Corum Golden Bridge watch</a></h5>
+
+                                    <div class="rating list">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                    </div>
+
+                                    <p class="desc">
+                                        Video in your pocket.
+
+                                        Its the small iPod with one very big idea: video. The worlds most popula..
+                                    </p>
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span><span class="price-new">$8.00</span>
+                                        <span class="price-tax">Ex Tax: $5.00</span>
+                                    </p>
+
+                                    <div class="button-group grid">
+                                        <button type="button" onclick="cart.add('36 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist_button" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('36 ');"></button>
+                                        <button class="compare_button" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('36 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=36"></a></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-right">
+                                    <p class="price">
+                                        <span class="price-old">$122.00</span> <span class="price-new">$8.00</span>
+                                        <span class="price-tax">Ex Tax: $5.00</span>
+                                    </p>
+
+                                    <div class="button-group list">
+                                        <button type="button" onclick="cart.add('36 ');" title="Add to cart" data-toggle="tooltip"><span>Add to Cart </span></button>
+                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('36 ');"></button>
+                                        <button class="compare" type="button" data-toggle="tooltip" title="Add to Compare " onclick="compare.add('36 ');"></button>
+
+                                        <div class="quickview" title="Quick View" data-toggle="tooltip"><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/quick_view&amp;product_id=36"></a></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+            @*<div class="pagination-wrapper">
+                <div class="col-sm-6 text-left page-link"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;page=2">2</a></li><li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;page=3">3</a></li><li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;page=2">&gt;</a></li><li><a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=product/category&amp;path=20&amp;page=3">&gt;|</a></li></ul></div>
+                <div class="col-sm-6 text-right page-result">Showing 1 to 6 of 15 (3 Pages)</div>
+            </div>*@
+        </div>
+    </div>
+</div>

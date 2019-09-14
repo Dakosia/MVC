@@ -1,0 +1,312 @@
+﻿@using MVCExamShop.DAL
+@model List<Category>
+
+@{
+    string column = "";
+}
+
+<nav id="top">
+    <div class="container">
+        <div class="lang_cur_block">
+            <div class="pull-left">
+                <form action="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
+                    <div class="btn-group">
+                        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+
+                            <img src="/Content/catalog/language/en-gb/en-gb.png" alt="English" title="English">
+                            <span class="hidden-xs hidden-sm hidden-md">Language</span>&nbsp;<i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu language-menu">
+                            <li>
+                                <button class="btn btn-link btn-block language-select" type="button" name="en-gb"><img src="/Content/catalog/language/en-gb/en-gb.png" alt="English" title="English" /> English</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-link btn-block language-select" type="button" name="ar"><img src="/Content/catalog/language/ar/ar.png" alt="Arabic" title="Arabic" /> Arabic</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="code" value="" />
+                    <input type="hidden" name="redirect" value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=common/home" />
+                </form>
+            </div>
+            <div class="pull-left">
+                <form action="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency">
+                    <div class="btn-group">
+                        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                            <strong>$</strong>
+
+                            <span class="hidden-xs hidden-sm hidden-md">Currency</span>&nbsp;<i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu currency-menu">
+                            <li>
+                                <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
+                            </li>
+                            <li>
+                                <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
+                            </li>
+                            <li>
+                                <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="code" value="" />
+                    <input type="hidden" name="redirect" value="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=common/home" />
+                </form>
+            </div>
+
+        </div>
+        <div class="header-right">
+            <div class="header-right-container">
+                <div id="top-links" class="nav pull-right">
+                    <ul class="list-inline">
+                        <li><a href="index2724.html?route=information/contact"></a> <span class="hidden-xs hidden-sm hidden-md"></span></li>
+                        <li class="dropdown myaccount">
+                            <a href="indexe223.html?route=account/account" title="My Account" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">My Account</span> <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-right myaccount-menu">
+                                <li><a href="index5502.html?route=account/register">Register</a></li>
+                                <li><a href="indexe223.html?route=account/login">Login</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 header-cart">
+                    <div id="cart" class="btn-group btn-block">
+                        <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total">(0)</span></button>
+                        <ul class="dropdown-menu pull-right cart-menu">
+                            <li>
+                                <p class="text-center">Your shopping cart is empty!</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=" header_search">
+                    <div class="search"></div> <div id="search" class="input-group searchtoggle">
+                        <input type="text" name="search" value="" placeholder="Search" class="form-control input-lg" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-lg"><span class="button-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 header-logo">
+                <div id="logo"><a href="@Url.Action("Index","Home")"><img src="/Content/image/catalog/logo.png" title="Your Store" alt="Your Store" class="img-responsive" /></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="content_headercms_top"> </div>
+</header>
+<div class="container">
+    <nav class="nav-container" role="navigation">
+        <div class="nav-inner">
+            <!-- ======= Menu Code START ========= -->
+            <!-- Opencart 3 level Category Menu-->
+            <div id="menu" class="main-menu">
+                <div class="nav-responsive"><span>Menu</span><div class="expandable"></div></div>
+
+                <ul class="nav navbar-nav main-navigation treeview">
+                    <li class="top_level home_first"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    @*@foreach (Category category in Model.Where(c => c.ParentCategoryId == 0).Distinct())
+                    {
+                        if (lvl0 == 0)
+                        {
+                            column = "column4";
+
+                        }
+                        else
+                        {
+                            column = "column1";
+                        }
+                        <li class="top_level dropdown">
+                            <a href="index98dc.html?route=product/category&amp;path=20">@category.CategoryName</a>
+                            <div class="dropdown-menu megamenu @column">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled childs_1">
+                                        @foreach (Category subcategory in Model.Where(sc => sc.ParentCategoryId == category.CategoryId))
+                                        {
+                                            <li class="dropdown">
+                                                <a href="indexbfb0.html?route=product/category&amp;path=20_62_73">@subcategory.CategoryName</a>
+                                                <div class="dropdown-menu">
+                                                    <div class="dropdown-inner">
+                                                        <ul class="list-unstyled childs_2">
+                                                            @foreach (Category subsubcategory in Model.Where(ssc => ssc.ParentCategoryId == subcategory.CategoryId))
+                                                            {
+                                                                <li>
+                                                                    <a href="indexbfb0.html?route=product/category&amp;path=20_62_73">@subsubcategory.CategoryName</a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        { lvl0++; }
+                    }*@
+
+
+                    <li class="top_level dropdown">
+                            <a href="@Url.Action("Men", "Product")">Men</a>
+                            <div class="dropdown-menu megamenu column4">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled childs_1">
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li class="dropdown">
+                                            <a href="indexbe4c.html?route=product/category&amp;path=20_62">Watches</a>
+                                            <div class="dropdown-menu">
+                                                <div class="dropdown-inner">
+                                                    <ul class="list-unstyled childs_2">
+                                                        <li><a href="indexbfb0.html?route=product/category&amp;path=20_62_73">Casio</a></li>
+                                                        <li><a href="index7de9.html?route=product/category&amp;path=20_62_72">Fastrack</a></li>
+                                                        <li><a href="indexd382.html?route=product/category&amp;path=20_62_75">Fossil</a></li>
+                                                        <li><a href="index2cd0.html?route=product/category&amp;path=20_62_76">Sonata</a></li>
+                                                        <li><a href="index71b0.html?route=product/category&amp;path=20_62_74">Titan</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- 2 Level Sub Categories END -->
+
+                                    </ul>
+                                    <ul class="list-unstyled childs_1">
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li class="dropdown">
+                                            <a href="indexd9fe.html?route=product/category&amp;path=20_26">Footwear</a>
+                                            <div class="dropdown-menu">
+                                                <div class="dropdown-inner">
+                                                    <ul class="list-unstyled childs_2">
+                                                        <li><a href="index7ac8.html?route=product/category&amp;path=20_26_64">Casual Shoes</a></li>
+                                                        <li><a href="indexccf3.html?route=product/category&amp;path=20_26_67">Flip- Flops</a></li>
+                                                        <li><a href="indexee11.html?route=product/category&amp;path=20_26_65">Formal Shoes</a></li>
+                                                        <li><a href="indexc052.html?route=product/category&amp;path=20_26_66">Sandals &amp; Floaters</a></li>
+                                                        <li><a href="indexd236.html?route=product/category&amp;path=20_26_63">Sports Shoes</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- 2 Level Sub Categories END -->
+
+                                    </ul>
+                                    <ul class="list-unstyled childs_1">
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li class="dropdown">
+                                            <a href="indexf345.html?route=product/category&amp;path=20_27">Men's Grooming</a>
+                                            <div class="dropdown-menu">
+                                                <div class="dropdown-inner">
+                                                    <ul class="list-unstyled childs_2">
+                                                        <li><a href="indexc44b.html?route=product/category&amp;path=20_27_70">Beard Care &amp; Grooming</a></li>
+                                                        <li><a href="index68ae.html?route=product/category&amp;path=20_27_68">Deodorants</a></li>
+                                                        <li><a href="index7e30.html?route=product/category&amp;path=20_27_69">Perfumes</a></li>
+                                                        <li><a href="index5933.html?route=product/category&amp;path=20_27_71">Shaving &amp; Aftershave</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- 2 Level Sub Categories END -->
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="top_level dropdown">
+                            <a href="index1647.html?route=product/category&amp;path=25">Women</a>
+                            <div class="dropdown-menu megamenu column1">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled childs_1">
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li class="dropdown">
+                                            <a href="index955a.html?route=product/category&amp;path=25_32">Accessories</a>
+                                            <div class="dropdown-menu">
+                                                <div class="dropdown-inner">
+                                                    <ul class="list-unstyled childs_2">
+                                                        <li><a href="index073c.html?route=product/category&amp;path=25_32_78">Handbags</a></li>
+                                                        <li><a href="index4454.html?route=product/category&amp;path=25_32_79">Shoulder Bags</a></li>
+                                                        <li><a href="indexa786.html?route=product/category&amp;path=25_32_80">Sling bags</a></li>
+                                                        <li><a href="index9da4.html?route=product/category&amp;path=25_32_77">Smart Bands</a></li>
+                                                        <li><a href="index75f0.html?route=product/category&amp;path=25_32_81">Sunglasses</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="indexf3db.html?route=product/category&amp;path=25_31">Beauty &amp; Grooming</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="indexc219.html?route=product/category&amp;path=25_29">Clothing</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="indexe177.html?route=product/category&amp;path=25_28">Ethnic Wear</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="index68a7.html?route=product/category&amp;path=25_30">Footwear</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="top_level dropdown">
+                            <a href="index70a9.html?route=product/category&amp;path=57">Baby &amp; Kids</a>
+                            <div class="dropdown-menu megamenu column1">
+                                <div class="dropdown-inner">
+                                    <ul class="list-unstyled childs_1">
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="indexbe86.html?route=product/category&amp;path=57_85">Baby Care</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="index2ec6.html?route=product/category&amp;path=57_82">Kids Clothing</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="indexa470.html?route=product/category&amp;path=57_83">Kids Footwear</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+                                        <!-- 2 Level Sub Categories START -->
+                                        <li><a href="index08bf.html?route=product/category&amp;path=57_84">Toys</a></li>
+                                        <!-- 2 Level Sub Categories END -->
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    <!-- <li class="top_level"> <a href="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=information/blogger/blogs">Blogs</a></li> -->
+                    <li class="blog-link"> <a href="@Url.Action("Blogs","Information")">Blogs</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+</div>
+<div class="content-top-breadcum">
+    <div class="container">
+        <div class="row">
+            <div id="title-content">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======= Quick view JS ========= -->
+<script>
+    function quickbox() {
+        if ($(window).width() > 767) {
+            $('.quickview').magnificPopup({
+                type: 'iframe',
+                delegate: 'a',
+                preloader: true,
+                tLoading: 'Loading image #%curr%...',
+            });
+        }
+    }
+    jQuery(document).ready(function () { quickbox(); });
+    jQuery(window).resize(function () { quickbox(); });
+</script>

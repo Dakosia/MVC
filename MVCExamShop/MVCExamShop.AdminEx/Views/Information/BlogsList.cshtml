@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVCExamShop.DAL.Blog>
+
+@{
+    ViewBag.Title = "Blogs List";
+}
+
+<h2>Blogs List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBlog")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogCreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogImagePath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditBlog", new { BlogId = item.BlogId }) |
+            @Html.ActionLink("Details", "DetailsBlog", new { BlogId = item.BlogId }) |
+            @Html.ActionLink("Delete", "DeleteBlog", new { BlogId = item.BlogId })
+        </td>
+    </tr>
+}
+
+</table>

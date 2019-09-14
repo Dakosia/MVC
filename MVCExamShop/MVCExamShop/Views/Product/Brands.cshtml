@@ -1,0 +1,108 @@
+﻿@using MVCExamShop.DAL
+@model List<Brand>
+
+@{
+    ViewBag.Title = "Brands";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div id="product-manufacturer" class="container">
+    <ul class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("Brands","Product")">Brand</a></li>
+    </ul>
+    <div class="row">
+        @Html.Partial("Information/_LeftNavInformation")
+        <div id="content" class="col-sm-9">
+            <h1>Account</h1>
+            <p>
+                <strong>Brand Index:</strong>
+                @foreach (Brand brand in Model.GroupBy(b => b.BrandFirstChar).Select(grp => grp.First()).OrderBy(o => o.BrandFirstChar))
+                {
+                    @:&nbsp; &nbsp;&nbsp;<a href="@Url.Action("Brands","Information")#@brand.BrandFirstChar">@brand.BrandFirstChar</a>
+                }
+                @*&nbsp;&nbsp;&nbsp;<a href="@Url.Action("Brands","Information")#A">A</a>
+                &nbsp;&nbsp;&nbsp;<a href="@Url.Action("Brands","Information")#C">C</a>
+                &nbsp;&nbsp;&nbsp;<a href="@Url.Action("Brands","Information")#H">H</a>
+                &nbsp;&nbsp;&nbsp;<a href="@Url.Action("Brands","Information")#P">P</a>
+                &nbsp;&nbsp;&nbsp;<a href="@Url.Action("Brands","Information")#S">S</a>*@
+            </p>
+
+            @foreach (Brand brand in Model.GroupBy(b => b.BrandFirstChar).Select(grp => grp.First()).OrderBy(o => o.BrandFirstChar))
+            {
+                <div class="manufacturer-list">
+                    <div class="manufacturer-heading">@brand.BrandFirstChar<a id="@brand.BrandFirstChar"></a></div>
+                    @foreach (Brand br in Model.Where(br => br.BrandFirstChar == brand.BrandFirstChar))
+                    {
+                        <div class="manufacturer-content">
+                            <div class="row">
+                                <div class="col-sm-12"><a href="index98fa.html?route=product/manufacturer/info&amp;manufacturer_id=8">@br.BrandName</a></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            @*@foreach (Brand brand in Model.OrderBy(b => b.BrandFirstChar))
+            {
+                <div class="manufacturer-content">
+                    <div class="row">
+                        <div class="col-sm-12"><a href="index98fa.html?route=product/manufacturer/info&amp;manufacturer_id=8">@brand.BrandName</a></div>
+                    </div>
+                </div>
+            }*@
+            @*<div class="manufacturer-list">
+                <div class="manufacturer-heading">A<a id="A"></a></div>
+
+                <div class="manufacturer-content">
+                    <div class="row">
+                        <div class="col-sm-12"><a href="index98fa.html?route=product/manufacturer/info&amp;manufacturer_id=8">Apple</a></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="manufacturer-list">
+                <div class="manufacturer-heading">C<a id="C"></a></div>
+
+                <div class="manufacturer-content">
+                    <div class="row">
+                        <div class="col-sm-12"><a href="index74a7.html?route=product/manufacturer/info&amp;manufacturer_id=9">Canon</a></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="manufacturer-list">
+                <div class="manufacturer-heading">H<a id="H"></a></div>
+
+                <div class="manufacturer-content">
+                    <div class="row">
+                        <div class="col-sm-12"><a href="indexe69c.html?route=product/manufacturer/info&amp;manufacturer_id=7">Hewlett-Packard</a></div>
+                        <div class="col-sm-12"><a href="index54e6.html?route=product/manufacturer/info&amp;manufacturer_id=5">HTC</a></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="manufacturer-list">
+                <div class="manufacturer-heading">P<a id="P"></a></div>
+
+                <div class="manufacturer-content">
+                    <div class="row">
+                        <div class="col-sm-12"><a href="index5b2d.html?route=product/manufacturer/info&amp;manufacturer_id=6">Palm</a></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="manufacturer-list">
+                <div class="manufacturer-heading">S<a id="S"></a></div>
+
+                <div class="manufacturer-content">
+                    <div class="row">
+                        <div class="col-sm-12"><a href="index8be0.html?route=product/manufacturer/info&amp;manufacturer_id=10">Sony</a></div>
+                    </div>
+                </div>
+
+            </div>*@
+        </div>
+    </div>
+</div>
+
+

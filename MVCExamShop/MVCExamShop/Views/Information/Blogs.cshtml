@@ -1,0 +1,231 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MVCExamShop.DAL
+@using System.Globalization
+@model IPagedList<Blog>
+
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("Blogs","Information")">Blogs</a></li>
+    </ul>
+    <div class="row">
+        @Html.Partial("Product/_LeftNavSpecials")
+
+
+        <div id="content" class="col-sm-9  all-blog">
+            <h1>All Blogs</h1>
+
+
+            <div class="panel-default">
+                <h4>Latest Blog</h4>
+
+                @foreach (Blog blog in Model)
+                {
+                    int commentCount = (ViewData["Comment"] as List<Comment>).Where(c => c.BlogId == blog.BlogId).Count();
+                    <div class="panel blog-content first-item">
+                        <div class="panel-body blog-body">
+
+
+                            <div class="blog-left-content">
+                                <div class="blog-image">
+                                    <img src="@blog.BlogImagePath" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                    <div class="post-image-hover"> </div>
+                                    <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="@blog.BlogImagePath" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="@Url.Action("BlogReadMore", "Information", new { BlogId = blog.BlogId })"><i class="fa fa-link"></i></a></p>
+
+                                </div>
+                            </div>
+
+                            <h5><a href="@Url.Action("BlogReadMore", "Information", new { BlogId = blog.BlogId })">@blog.BlogName</a></h5>
+                            <div class="blog-top">
+                                <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="@Url.Action("BlogReadMore", "Information", new { BlogId = blog.BlogId })">@commentCount  Comment &nbsp; &nbsp;/ </a> </div>
+                                <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  @*9 April, 2018*@ @blog.BlogCreationDate.Day @blog.BlogCreationDate.ToString("MMMM", CultureInfo.InvariantCulture), @blog.BlogCreationDate.Year</div>
+                            </div>
+                            <div class="blog-desc">@blog.BlogShortDescription</div>
+                            <div class="blog-bottom">
+                                <div class="read-more"> <a href="@Url.Action("BlogReadMore", "Information", new { BlogId = blog.BlogId })"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+                <div class="moto-widget moto-widget-pagination moto-preset-default clearfix moto-spacing-top-small moto-spacing-bottom-small">
+                    @Html.PagedListPager(Model, page => Url.Action("Blogs", new { page }))
+                </div>
+
+                @*<div class="panel blog-content first-item">
+                    <div class="panel-body blog-body">
+
+
+                        <div class="blog-left-content">
+                            <div class="blog-image">
+                                <img src="/Content/image/cache/catalog/blog6-910x700.jpg" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                <div class="post-image-hover"> </div>
+                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="/Content/image/cache/catalog/blog6-910x700.jpg" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="index2c9f.html?route=information/blogger&amp;blogger_id=6"><i class="fa fa-link"></i></a></p>
+
+                            </div>
+                        </div>
+
+                        <h5><a href="index2c9f.html?route=information/blogger&amp;blogger_id=6">Quisque egestas ullamco laboris</a></h5>
+                        <div class="blog-top">
+                            <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="index2c9f.html?route=information/blogger&amp;blogger_id=6">1  Comment &nbsp; &nbsp;/ </a> </div>
+                            <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  9 April, 2018</div>
+                        </div>
+                        <div class="blog-desc">Mrs. Darling first heard of Peter when she was tidying up her children’s minds. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud ercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  </div>
+                        <div class="blog-bottom">
+                            <div class="read-more"> <a href="index2c9f.html?route=information/blogger&amp;blogger_id=6"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="panel blog-content first-item">
+                    <div class="panel-body blog-body">
+
+
+                        <div class="blog-left-content">
+                            <div class="blog-image">
+                                <img src="/Content/image/cache/catalog/blog5-910x700.jpg" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                <div class="post-image-hover"> </div>
+                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="/Content/image/cache/catalog/blog5-910x700.jpg" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="indexed5d.html?route=information/blogger&amp;blogger_id=5"><i class="fa fa-link"></i></a></p>
+
+                            </div>
+                        </div>
+
+                        <h5><a href="indexed5d.html?route=information/blogger&amp;blogger_id=5">Nostrum Iesum Christum </a></h5>
+                        <div class="blog-top">
+                            <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="indexed5d.html?route=information/blogger&amp;blogger_id=5">0  Comment &nbsp; &nbsp;/ </a> </div>
+                            <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  9 April, 2018</div>
+                        </div>
+                        <div class="blog-desc">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo onsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id st laborum.  </div>
+                        <div class="blog-bottom">
+                            <div class="read-more"> <a href="indexed5d.html?route=information/blogger&amp;blogger_id=5"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="panel blog-content first-item">
+                    <div class="panel-body blog-body">
+
+
+                        <div class="blog-left-content">
+                            <div class="blog-image">
+                                <img src="/Content/image/cache/catalog/blog4-910x700.jpg" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                <div class="post-image-hover"> </div>
+                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="/Content/image/cache/catalog/blog4-910x700.jpg" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="index4b1d.html?route=information/blogger&amp;blogger_id=4"><i class="fa fa-link"></i></a></p>
+
+                            </div>
+                        </div>
+
+                        <h5><a href="index4b1d.html?route=information/blogger&amp;blogger_id=4">Libero lorem vehicula </a></h5>
+                        <div class="blog-top">
+                            <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="index4b1d.html?route=information/blogger&amp;blogger_id=4">0  Comment &nbsp; &nbsp;/ </a> </div>
+                            <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  9 April, 2018</div>
+                        </div>
+                        <div class="blog-desc">Link: St. Louis Blues Audio shortcode: “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  </div>
+                        <div class="blog-bottom">
+                            <div class="read-more"> <a href="index4b1d.html?route=information/blogger&amp;blogger_id=4"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="panel blog-content first-item">
+                    <div class="panel-body blog-body">
+
+
+                        <div class="blog-left-content">
+                            <div class="blog-image">
+                                <img src="/Content/image/cache/catalog/blog3-910x700.jpg" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                <div class="post-image-hover"> </div>
+                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="/Content/image/cache/catalog/blog3-910x700.jpg" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="indexaa69.html?route=information/blogger&amp;blogger_id=3"><i class="fa fa-link"></i></a></p>
+
+                            </div>
+                        </div>
+
+                        <h5><a href="indexaa69.html?route=information/blogger&amp;blogger_id=3">Excepteur sint occaecat cupidatat</a></h5>
+                        <div class="blog-top">
+                            <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="indexaa69.html?route=information/blogger&amp;blogger_id=3">0  Comment &nbsp; &nbsp;/ </a> </div>
+                            <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  9 April, 2018</div>
+                        </div>
+                        <div class="blog-desc">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcao laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur..  </div>
+                        <div class="blog-bottom">
+                            <div class="read-more"> <a href="indexaa69.html?route=information/blogger&amp;blogger_id=3"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="panel blog-content first-item">
+                    <div class="panel-body blog-body">
+
+
+                        <div class="blog-left-content">
+                            <div class="blog-image">
+                                <img src="/Content/image/cache/catalog/blog2-910x700.jpg" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                <div class="post-image-hover"> </div>
+                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="/Content/image/cache/catalog/blog2-910x700.jpg" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="index5463.html?route=information/blogger&amp;blogger_id=2"><i class="fa fa-link"></i></a></p>
+
+                            </div>
+                        </div>
+
+                        <h5><a href="index5463.html?route=information/blogger&amp;blogger_id=2">Ipsum blandit donec vitae</a></h5>
+                        <div class="blog-top">
+                            <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="index5463.html?route=information/blogger&amp;blogger_id=2">0  Comment &nbsp; &nbsp;/ </a> </div>
+                            <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  9 April, 2018</div>
+                        </div>
+                        <div class="blog-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  </div>
+                        <div class="blog-bottom">
+                            <div class="read-more"> <a href="index5463.html?route=information/blogger&amp;blogger_id=2"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="panel blog-content first-item">
+                    <div class="panel-body blog-body">
+
+
+                        <div class="blog-left-content">
+                            <div class="blog-image">
+                                <img src="/Content/image/cache/catalog/blog1-910x700.jpg" alt="Blogs" title="Blogs" class="img-thumbnail" />
+                                <div class="post-image-hover"> </div>
+                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="/Content/image/cache/catalog/blog1-910x700.jpg" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="index5a4b.html?route=information/blogger&amp;blogger_id=1"><i class="fa fa-link"></i></a></p>
+
+                            </div>
+                        </div>
+
+                        <h5><a href="index5a4b.html?route=information/blogger&amp;blogger_id=1">Contrary to all popular belief Lorem Ipsum is simply</a></h5>
+                        <div class="blog-top">
+                            <div class="write-comment"><i class="fa fa-comment-o"></i> <a href="index5a4b.html?route=information/blogger&amp;blogger_id=1">0  Comment &nbsp; &nbsp;/ </a> </div>
+                            <div class="blog-date"> <!-- <i class="fa fa-calendar"></i> -->  9 April, 2018</div>
+                        </div>
+                        <div class="blog-desc">Passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in Middle of text. All the.Passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in Middle of text. All the.Passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in Middle of text.  </div>
+                        <div class="blog-bottom">
+                            <div class="read-more"> <a href="index5a4b.html?route=information/blogger&amp;blogger_id=1"> <!-- <i class="fa fa-link"></i> --> read more</a> </div>
+                        </div>
+
+
+                    </div>
+                </div>*@
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

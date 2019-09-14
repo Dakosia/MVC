@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "About Us";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div id="information-information" class="container">
+    <ul class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("AboutUs","Information")">About Us</a></li>
+    </ul>
+    <div class="row">
+        @Html.Partial("Information/_LeftNavInformation")
+        <div id="content" class="col-sm-9">
+            <h1>About Us</h1>
+            <div class="aboutus">
+                <h3>The standard Lorem Ipsum passage</h3>
+                <div class="image1"> </div>
+                <div class="about-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan turpis posuere cursus ultricies. Ut nunc justo, faucibus eget elit quis, vehicula rhoncus nulla. Phasellus convallis sem nec facilisis commodo. Fusce ut molestie turpis. Suspendisse aliquet sed massa in vulputate. Quisque gravida suscipit tincidunt.</div>
+            </div>
+            <div class="aboutus">
+                <h3>At vero eos et accusamus et iusto odio dignissimos</h3>
+                <div class="image2"> </div>
+                <div class="about-content">Mauris elementum scelerisque elit non egestas. Cras lacus nibh, pretium quis bibendum nec, dapibus a metus. Morbi eros lectus, aliquam eu aliquam id, fringilla nec eros. Praesent suscipit commodo diam, non viverra turpis dapibus malesuada. Duis cursus metus eu sem eleifend, id rhoncus odio porttitor.</div>
+            </div>
+            <div class="aboutus">
+                <h3>Certain circumstances and owing to the claims of duty or the obligations</h3>
+                <div class="image3"> </div>
+                <div class="about-content">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes.</div>
+            </div>
+            <div class="aboutus">
+                <h3>Integer ultrices laoreet nunc in gravida</h3>
+                <div class="image4"> </div>
+                <div class="about-content">Sed lobortis pulvinar viverra. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris suscipit dolor scelerisque, bibendum tellus ac, pharetra sapien. Praesent lacinia scelerisque odio et consequat. In a facilisis lacus. Maecenas vel lobortis tellus.</div>
+            </div>
+            <div class="buttons">
+                <div class="pull-right"><a class="btn btn-primary" href="#">Continue</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+

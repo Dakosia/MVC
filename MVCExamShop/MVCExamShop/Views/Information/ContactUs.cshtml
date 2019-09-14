@@ -1,0 +1,178 @@
+﻿@using MVCExamShop.DAL
+@model Contact
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div id="information-contact" class="container">
+    <ul class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("ContactUs","Information")">Contact Us</a></li>
+    </ul>
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            @Html.Partial("Information/_LeftNavCategories")
+        </aside>
+        <div id="content" class="col-sm-9">
+            <h1>Categories</h1>
+            <h3>Our Location</h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row contact-info">
+                        <div class="left">
+
+                            <div class="address-detail">
+                                <i class="fa fa-industry"></i><strong>Your Store</strong>
+                                <address>
+                                    507,Magnor Computer Pvt.Ltd;<br />
+                                    Udhna Darvaja,<br />
+                                    Surat.
+                                </address>
+
+                            </div>
+                            <div class="telephone">
+                                <i class="fa fa-phone-square"></i>
+                                <strong>Telephone </strong>
+                                <address>123456789  </address>
+                            </div>
+                            <div class="fax">
+                                <i class="fa fa-fax"></i>
+
+                                <strong>Fax </strong>
+                                <address>00-00-00 </address>
+
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="map">
+                                <script type="text/javascript" src="/Content/catalog/www.webestools.com/google_map_gen4051.html?lati=21.182785&amp;long=72.831834&amp;zoom=4&amp;width=350&amp;height=200&amp;mapType=normal&amp;map_btn_normal=yes&amp;map_btn_satelite=yes&amp;map_btn_mixte=yes&amp;map_small=yes&amp;marqueur=yes&amp;info_bulle="></script>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            @using (Ajax.BeginForm("SendContactUsForm", "Information", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "send-contact-us-form",
+                InsertionMode = InsertionMode.Replace,
+            }, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <legend>Contact Us</legend>
+
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.UserName, "Your Name", htmlAttributes: new { @class = "col-sm-2 control-label", @for = "input-name" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.UserName, htmlAttributes: new { @class = "form-control", name = "name", id = "input-name" })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+
+                        @*<label class="col-sm-2 control-label" for="input-name">Your Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" value="Home" id="input-name" class="form-control" />
+                    </div>*@
+                    </div>
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.UserEmail, "E-Mail", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(model => model.UserEmail, htmlAttributes: new { @class = "form-control", name = "email", id = "input-email" })
+                            @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+
+                        </div>
+                        @*<label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="email" value="" id="input-email" class="form-control" />
+                    </div>*@
+                    </div>
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.UserMessage, "Enquiry", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(model => model.UserMessage, htmlAttributes: new { @class = "form-control", name = "enquiry", id = "input-enquiry", rows = "10" })
+                            @Html.ValidationMessageFor(model => model.UserMessage, "", new { @class = "text-danger" })
+                        </div>
+                        @*<label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+                    <div class="col-sm-10">
+                        <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+                    </div>*@
+                    </div>
+                    <!-- <fieldset> -->
+                    <!-- <legend>Captcha</legend> -->
+                    @*<div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-captcha">Enter the code in the box below</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="captcha" id="input-captcha" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 pull-right">
+                        <img src="/Content/image/cache/catalog/index2d42.jpg" alt="" />
+                    </div>
+                </div>*@
+                    <!-- </fieldset> -->
+                </fieldset>
+                <div class="buttons">
+                    <div class="pull-right">
+                        <input class="btn btn-primary" type="submit" value="Submit" />
+                    </div>
+                </div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            }
+            <div id="send-contact-us-form">
+
+            </div>
+
+            @*<form action="http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=information/contact" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <fieldset>
+                <legend>Contact Us</legend>
+                <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-name">Your Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" value="Home" id="input-name" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="email" value="" id="input-email" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+                    <div class="col-sm-10">
+                        <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+                    </div>
+                </div>
+                <!-- <fieldset> -->
+                <!-- <legend>Captcha</legend> -->
+                <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-captcha">Enter the code in the box below</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="captcha" id="input-captcha" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 pull-right">
+                        <img src="/Content/image/cache/catalog/index2d42.jpg" alt="" />
+                    </div>
+                </div>
+                <!-- </fieldset> -->
+            </fieldset>
+            <div class="buttons">
+                <div class="pull-right">
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </div>
+        </form>*@
+        </div>
+    </div>
+</div>
+
+

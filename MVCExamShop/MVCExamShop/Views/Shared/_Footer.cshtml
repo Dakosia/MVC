@@ -1,0 +1,228 @@
+﻿@using MVCExamShop.DAL
+@using System.Globalization
+@model List<Blog>
+
+<footer>
+    <div id="footer" class="container">
+        <div class="row">
+            <div class="content_footer_left">
+                <div class="box megnorblog">
+
+                    <div class="box-heading">Latest Blog</div>
+                    <div class="box-content">
+                        <div class="box-product">
+
+                            @foreach (Blog blog in Model.OrderByDescending(x => x.BlogCreationDate).ToList().Take(5))
+                            {
+                                <li class="slider-item">
+                                    <div class="product-block">
+                                        <div class="blog-left">
+                                            <div class="blog-image">
+                                                <a href="@Url.Action("BlogReadMore", "Information", new { BlogId = blog.BlogId })">
+                                                    <img src="@blog.BlogImagePath" alt="Latest Blog" title="Latest Blog" class="img-thumbnail" />
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="blog-right">
+                                            <h4><a href="@Url.Action("BlogReadMore", "Information", new { BlogId = blog.BlogId })">@blog.BlogName</a> </h4>
+                                            <div class="date-time">@blog.BlogCreationDate.Day,@blog.BlogCreationDate.ToString("MMM", CultureInfo.InvariantCulture),@blog.BlogCreationDate.Year</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        </div>
+                        <!-- <div class="buttons text-center">
+                           <button type="button" onclick="location='http://opencart.templatemela.com/OPCADD2/OPC036/index.php?route=information/blogger/blogs ';" class="btn btn-primary">See all Blogs</button>
+                         </div> -->
+                    </div>
+
+                </div>
+                <span class="blog_default_width" style="display:none; visibility:hidden"></span>
+                <!--<script type="text/javascript">
+
+                $(document).ready(function(){
+                $('.blogcarousel').owlCarousel({
+                        items: 2,
+                        autoPlay: 10000,
+                        singleItem: false,
+                        navigation: false,
+                        navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+                        pagination: true,
+                        itemsDesktop : [1000,2],
+                        itemsDesktopSmall :	[979,2]
+                    });
+                });
+                </script>-->
+            </div>
+            <div class="col-sm-3 column">
+                <h5>Information</h5>
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("AboutUs","Information")">About Us</a></li>
+                    <li><a href="@Url.Action("DeliveryInformation","Information")">Delivery Information</a></li>
+                    <li><a href="@Url.Action("PrivacyPolicy","Information")">Privacy Policy</a></li>
+                    <li><a href="@Url.Action("TermsAndConditions","Information")">Terms &amp; Conditions</a></li>
+                    <li><a href="@Url.Action("SiteMap","Information")">Site Map</a></li>
+                    <li><a href="@Url.Action("Brands","Product")">Brands</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 column">
+                <h5>Customer Service</h5>
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("ContactUs","Information")">Contact Us</a></li>
+                    <li><a href="@Url.Action("Returns","Product")">Returns</a></li>
+                    <li><a href="@Url.Action("SiteMap","Information")">Site Map</a></li>
+                    <li><a href="@Url.Action("Brands","Product")">Brands</a></li>
+                    <li><a href="@Url.Action("Specials","Product")">Specials</a></li>
+                    <li><a href="@Url.Action("GiftCertificates","Product")">Gift Certificates</a></li>
+                </ul>
+            </div>
+            <div class="content_footer_right">
+                <div>
+                    <div id="Store" class="col-sm-3 column">
+                        <h5>Store Information</h5>
+                        <ul class="company_Information">
+                            <li> My company information, Labela store</li>
+                            <li> online store,42 Puffin street 12345</li>
+                            <li>Puffinville Francet. </li>
+                            <li> 0123-456-789</li>
+                            <li><span><a>sales@yourcompany.com</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-top">
+            <div class="content_footer_top container">
+                <script>
+                    function subscribe() {
+                        var emailpattern = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                        var email = $('#txtemail').val();
+                        if (email != "") {
+                            if (!emailpattern.test(email)) {
+                                $('.text-danger').remove();
+                                var str = '<span class="error">Invalid Email</span>';
+                                $('#txtemail').after('<div class="text-danger">Invalid Email</div>');
+
+                                return false;
+                            }
+                            else {
+                                $.ajax({
+                                    url: 'index.php?route=extension/module/newsletters/news',
+                                    type: 'post',
+                                    data: 'email=' + $('#txtemail').val(),
+                                    dataType: 'json',
+
+
+                                    success: function (json) {
+
+                                        $('.text-danger').remove();
+                                        $('#txtemail').after('<div class="text-danger">' + json.message + '</div>');
+
+                                    }
+
+                                });
+                                return false;
+                            }
+                        }
+                        else {
+                            $('.text-danger').remove();
+                            $('#txtemail').after('<div class="text-danger">Email Is Require</div>');
+                            $(email).focus();
+
+                            return false;
+                        }
+
+
+                    }
+                </script>
+                <div class="newsletter-container">
+                    <h4>sign up here for early updates</h4>
+                    <div class="newsletter">
+
+
+                        <form action="#" method="post">
+                            <div class="form-group required">
+                                <div class="newsletter-box">
+                                    <input type="email" name="txtemail" id="txtemail" value="" placeholder="E-Mail" class="form-control input-lg" />
+                                    <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">Subscribe</i></button>
+
+
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+                <div>
+                    <div id="social_block" class="pull-left footer-block">
+                        <h4 class="title_block">Follow us</h4>
+                        <ul class="toggle-footer" style="">
+                            <li class="facebook">
+                                <a>
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="twitter">
+                                <a>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="rss">
+                                <a>
+                                    <i class="fa fa-rss" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="google_plus">
+                                <a>
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copy-right">
+
+                <div id="bottom-footer">
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Action("Specials","Product")">Specials</a></li>
+                        <li><a href="@Url.Action("GiftCertificates","Product")">Gift Certificates</a></li>
+                        <li><a href="@Url.Action("Brands","Product")">Brands</a></li>
+                        <li><a href="@Url.Action("Returns","Product")">Returns</a></li>
+                        <li><a href="@Url.Action("SiteMap","Information")">Site Map</a></li>
+                        <li class="contact"><a href="@Url.Action("ContactUs","Information")">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="powerd">Powered By <a href="http://www.opencart.com/">OpenCart</a><br /> Your Store &copy; 2018</div>
+            <div class="content_footer_bottom">
+                <div>
+                    <div class="footer_bottom">
+                        <div class="footer_bottom_inner">
+                            <h5>Payment Block</h5>
+                            <ul class="payment_block">
+                                <li class="discover"><a href="#"><img src="/Content/image/catalog/discover.png" alt=""></a></li>
+                                <li class="mastro"><a href="#"><img src="/Content/image/catalog/maestro.png" alt=""> </a></li>
+                                <li class="paypal"><a href="#"><img src="/Content/image/catalog/paypal.png" alt=""> </a></li>
+                                <li class="amex"><a href="#"><img src="/Content/image/catalog/American-Express-icon.png" alt=""> </a></li>
+                                <li class="g-wall"><a href="#"><img src="/Content/image/catalog/google-wallet.png" alt=""> </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+</footer>

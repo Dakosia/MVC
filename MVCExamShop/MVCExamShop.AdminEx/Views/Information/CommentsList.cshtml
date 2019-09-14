@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVCExamShop.DAL.Comment>
+
+@{
+    ViewBag.Title = "Comments List";
+}
+
+<h2>Comments List</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "CreateComment")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentCreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditComment", new { CommentId = item.CommentId }) |
+            @Html.ActionLink("Details", "DetailsComment", new { CommentId = item.CommentId }) |
+            @Html.ActionLink("Delete", "DeleteComment", new { CommentId = item.CommentId })
+        </td>
+    </tr>
+}
+
+</table>

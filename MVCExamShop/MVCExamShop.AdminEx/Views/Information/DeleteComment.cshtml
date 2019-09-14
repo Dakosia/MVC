@@ -1,0 +1,68 @@
+﻿@model MVCExamShop.DAL.Comment
+
+@{
+    ViewBag.Title = "Delete Comment";
+}
+
+<h2>Delete Comment</h2>
+
+<p style="color: red">
+    @ViewBag.Message
+</p>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentCreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentCreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "CommentsList")
+        </div>
+    }
+</div>

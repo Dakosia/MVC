@@ -1,0 +1,78 @@
+﻿@using MVCExamShop.DAL
+@using System.Globalization
+@model Blog
+
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+    int i = 0;
+
+    List<Comment> comments = ViewData["Comment"] as List<Comment>;
+}
+
+<div class="container">
+    <ul class="breadcrumb">
+
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+
+        <li><a href="@Url.Action("Blogs","Information")">All Blogs</a></li>
+
+        <li><a href="@Url.Action("BlogReadMore", "Information", new { BlogId = Model.BlogId })">@Model.BlogName</a></li>
+
+
+    </ul>
+    <div class="row">
+        @Html.Partial("Product/_LeftNavSpecials")
+
+        <div id="content" class="col-sm-9  single-blog">
+            <h1>@Model.BlogName</h1>
+
+            <div class="blog-img">
+                <img src="@Model.BlogImagePath" alt="@Model.BlogName" title="@Model.BlogName" class="img-thumbnail" />
+            </div>
+            <!-- <div class="single-top">
+          <div class="blog-date"> <i class="fa fa-calendar"></i>  </div>
+        </div> -->
+
+
+            <div class="blog-desc">@Model.BlogContent</div>
+
+
+
+
+            <div id="add-comment-form">
+                @foreach (Comment comment in comments.Where(c => c.BlogId == Model.BlogId))
+                {
+                    if (i == 0)
+                    {
+                        <h4>Your Comments</h4>
+                    }
+                    <div class="view-comment">
+                        <div class="panel-default comment-content">
+                            <div class="comment-icon"><i class="fa fa-comments"></i></div>
+                            <div class="commnet-left">
+                                <div class="com-author">@comment.Author</div>
+                                <div class="com-date">@*09,Apr,2018*@ @comment.CommentCreationDate.Day,@comment.CommentCreationDate.ToString("MMM", CultureInfo.InvariantCulture),@comment.CommentCreationDate.Year</div>
+                            </div>
+                            <div class="commnet-right">
+                                <div class="com-data">@comment.UserComment</div>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                }
+                @{i = 0;}
+            </div>
+
+
+            @{ Html.RenderAction("AddComment", "Information", new { BlogId = Model.BlogId }); }
+
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+            {
+                <p>@ViewBag.Message</p>
+            }
+        </div>
+
+    </div>
+</div>
+

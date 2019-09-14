@@ -1,0 +1,161 @@
+﻿@using MVCExamShop.DAL
+@model List<Category>
+
+@{
+    ViewBag.Title = "Site Map";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div id="information-sitemap" class="container">
+    <ul class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a></li>
+        <li><a href="@Url.Action("SiteMap","Information")">Site Map</a></li>
+    </ul>
+    <div class="row">
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            @Html.Partial("Information/_LeftNavCategories")
+        </aside>
+        <div id="content" class="col-sm-9">
+            <h1>Categories</h1>
+            <div class="row site-map">
+                <div class="col-sm-6 sitemap-left">
+                    <ul>
+                        @foreach (Category category in Model.Where(c => c.ParentCategoryId == 0).Distinct())
+                        {
+                            <li>
+                                <a href="index98dc.html?route=product/category&amp;path=20">@category.CategoryName</a>
+                                <ul>
+                                    @foreach (Category subcategory in Model.Where(sc => sc.ParentCategoryId == category.CategoryId))
+                                    {
+                                        <li>
+                                            <a href="indexbfb0.html?route=product/category&amp;path=20_62_73">@subcategory.CategoryName</a>
+                                            <ul>
+                                                @foreach (Category subsubcategory in Model.Where(ssc => ssc.ParentCategoryId == subcategory.CategoryId))
+                                                {
+                                                    <li>
+                                                        <a href="indexbfb0.html?route=product/category&amp;path=20_62_73">@subsubcategory.CategoryName</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @*<li>
+            <a href="index98dc.html?route=product/category&amp;path=20">Men</a>
+            <ul>
+                <li>
+                    <a href="indexbe4c.html?route=product/category&amp;path=20_62">Watches</a>
+                    <ul>
+                        <li><a href="indexbfb0.html?route=product/category&amp;path=20_62_73">Casio</a></li>
+                        <li><a href="index7de9.html?route=product/category&amp;path=20_62_72">Fastrack</a></li>
+                        <li><a href="indexd382.html?route=product/category&amp;path=20_62_75">Fossil</a></li>
+                        <li><a href="index2cd0.html?route=product/category&amp;path=20_62_76">Sonata</a></li>
+                        <li><a href="index71b0.html?route=product/category&amp;path=20_62_74">Titan</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="indexd9fe.html?route=product/category&amp;path=20_26">Footwear</a>
+                    <ul>
+                        <li><a href="index7ac8.html?route=product/category&amp;path=20_26_64">Casual Shoes</a></li>
+                        <li><a href="indexccf3.html?route=product/category&amp;path=20_26_67">Flip- Flops</a></li>
+                        <li><a href="indexee11.html?route=product/category&amp;path=20_26_65">Formal Shoes</a></li>
+                        <li><a href="indexc052.html?route=product/category&amp;path=20_26_66">Sandals &amp; Floaters</a></li>
+                        <li><a href="indexd236.html?route=product/category&amp;path=20_26_63">Sports Shoes</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="indexf345.html?route=product/category&amp;path=20_27">Men's Grooming</a>
+                    <ul>
+                        <li><a href="indexc44b.html?route=product/category&amp;path=20_27_70">Beard Care &amp; Grooming</a></li>
+                        <li><a href="index68ae.html?route=product/category&amp;path=20_27_68">Deodorants</a></li>
+                        <li><a href="index7e30.html?route=product/category&amp;path=20_27_69">Perfumes</a></li>
+                        <li><a href="index5933.html?route=product/category&amp;path=20_27_71">Shaving &amp; Aftershave</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="index1647.html?route=product/category&amp;path=25">Women</a>
+            <ul>
+                <li>
+                    <a href="index955a.html?route=product/category&amp;path=25_32">Accessories</a>
+                    <ul>
+                        <li><a href="index073c.html?route=product/category&amp;path=25_32_78">Handbags</a></li>
+                        <li><a href="index4454.html?route=product/category&amp;path=25_32_79">Shoulder Bags</a></li>
+                        <li><a href="indexa786.html?route=product/category&amp;path=25_32_80">Sling bags</a></li>
+                        <li><a href="index9da4.html?route=product/category&amp;path=25_32_77">Smart Bands</a></li>
+                        <li><a href="index75f0.html?route=product/category&amp;path=25_32_81">Sunglasses</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="indexf3db.html?route=product/category&amp;path=25_31">Beauty &amp; Grooming</a>
+                </li>
+                <li>
+                    <a href="indexc219.html?route=product/category&amp;path=25_29">Clothing</a>
+                </li>
+                <li>
+                    <a href="indexe177.html?route=product/category&amp;path=25_28">Ethnic Wear</a>
+                </li>
+                <li>
+                    <a href="index68a7.html?route=product/category&amp;path=25_30">Footwear</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="index70a9.html?route=product/category&amp;path=57">Baby &amp; Kids</a>
+            <ul>
+                <li>
+                    <a href="indexbe86.html?route=product/category&amp;path=57_85">Baby Care</a>
+                </li>
+                <li>
+                    <a href="index2ec6.html?route=product/category&amp;path=57_82">Kids Clothing</a>
+                </li>
+                <li>
+                    <a href="indexa470.html?route=product/category&amp;path=57_83">Kids Footwear</a>
+                </li>
+                <li>
+                    <a href="index08bf.html?route=product/category&amp;path=57_84">Toys</a>
+                </li>
+            </ul>
+        </li>*@
+                    </ul>
+                </div>
+                <div class="col-sm-6 sitemap-right">
+                    <ul>
+                        <li><a href="@Url.Action("Brands","Product")">Brands</a></li>
+                        <li><a href="@Url.Action("Specials","Product")">Specials</a></li>
+                        <li>
+                            <a href="@Url.Action("MyAccount","Account")">My Account</a>
+                            <ul>
+                                <li><a href="@Url.Action("AccountInformation","Account")">Account Information</a></li>
+                                <li><a href="@Url.Action("Password","Account")">Password</a></li>
+                                <li><a href="@Url.Action("AddressBook","Account")">Address Book</a></li>
+                                <li><a href="@Url.Action("OrderHistory","Account")">Order History</a></li>
+                                <li><a href="@Url.Action("Downloads","Account")">Downloads</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="@Url.Action("ViewCart","Account")">View Cart</a></li>
+                        <li><a href="@Url.Action("Checkout","Account")">Checkout</a></li>
+                        <li><a href="@Url.Action("Returns","Product")">Returns</a></li>
+                        <li><a href="@Url.Action("GiftCertificates","Product")">Gift Certificates</a></li>
+                        <li><a href="@Url.Action("Search","Product")">Search</a></li>
+                        <li>
+                            Information
+                            <ul>
+                                <li><a href="@Url.Action("AboutUs","Information")">About Us</a></li>
+                                <li><a href="@Url.Action("DeliveryInformation","Information")">Delivery Information</a></li>
+                                <li><a href="@Url.Action("PrivacyPolicy","Information")">Privacy Policy</a></li>
+                                <li><a href="@Url.Action("TermsAndConditions","Information")">Terms &amp; Conditions</a></li>
+                                <li><a href="@Url.Action("ContactUs","Information")">Contact Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
